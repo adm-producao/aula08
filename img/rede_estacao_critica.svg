@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 390" role="img" aria-labelledby="title desc">
+  <title id="title">Rede com caminho crítico destacado</title>
+  <desc id="desc">As atividades B, D e E formam o caminho crítico de nove dias.</desc>
+  <defs>
+    <marker id="arrow-muted" markerWidth="13" markerHeight="13" refX="11" refY="6.5" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L13,6.5 L0,13 Z" fill="#9aa7b2"/>
+    </marker>
+    <marker id="arrow-critical" markerWidth="16" markerHeight="16" refX="13.5" refY="8" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L16,8 L0,16 Z" fill="#ba4a5a"/>
+    </marker>
+  </defs>
+  <rect width="1200" height="390" rx="26" fill="#f7f5ef"/>
+  <g fill="none" stroke="#9aa7b2" stroke-width="3" marker-end="url(#arrow-muted)">
+    <path d="M155 195 H225 V75 H306"/>
+    <path d="M155 195 H225 V315 H306"/>
+    <path d="M470 75 H540 V140 H616"/>
+    <path d="M470 315 H720 V215 H806"/>
+  </g>
+  <g fill="none" stroke="#ba4a5a" stroke-width="4.5" marker-end="url(#arrow-critical)">
+    <path d="M155 195 H306"/>
+    <path d="M470 195 H540 V175 H616"/>
+    <path d="M780 175 H806"/>
+    <path d="M970 195 H1046"/>
+  </g>
+  <g font-family="Arial, sans-serif" text-anchor="middle">
+    <circle cx="100" cy="195" r="55" fill="#17324d"/>
+    <text x="100" y="204" fill="#ffffff" font-size="28" font-weight="700">Início</text>
+    <g fill="#ffffff" stroke="#9aa7b2" stroke-width="4">
+      <rect x="310" y="25" width="160" height="100" rx="18"/>
+      <rect x="310" y="265" width="160" height="100" rx="18"/>
+    </g>
+    <g fill="#fff8f8" stroke="#ba4a5a" stroke-width="5.5">
+      <rect x="310" y="145" width="160" height="100" rx="18"/>
+      <rect x="620" y="105" width="160" height="100" rx="18"/>
+      <rect x="810" y="145" width="160" height="100" rx="18"/>
+    </g>
+    <g fill="#17324d" font-size="32" font-weight="700">
+      <text x="390" y="67">A</text><text x="390" y="187">B</text><text x="390" y="307">C</text>
+      <text x="700" y="147">D</text><text x="890" y="187">E</text>
+    </g>
+    <g font-size="24">
+      <text x="390" y="101" fill="#687786">2 dias</text>
+      <text x="390" y="221" fill="#ba4a5a" font-weight="700">4 dias</text>
+      <text x="390" y="341" fill="#687786">3 dias</text>
+      <text x="700" y="181" fill="#ba4a5a" font-weight="700">3 dias</text>
+      <text x="890" y="221" fill="#ba4a5a" font-weight="700">2 dias</text>
+    </g>
+    <circle cx="1105" cy="195" r="55" fill="#17324d"/>
+    <text x="1105" y="204" fill="#ffffff" font-size="28" font-weight="700">Fim</text>
+  </g>
+  <g font-family="Arial, sans-serif" font-size="21" font-weight="700">
+    <rect x="740" y="18" width="380" height="44" rx="22" fill="#ba4a5a"/>
+    <text x="930" y="47" text-anchor="middle" fill="#ffffff">Caminho crítico: B–D–E = 9 dias</text>
+  </g>
+</svg>

@@ -1,0 +1,149 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 520" role="img" aria-labelledby="title desc">
+  <title id="title">Passagem para frente no Exemplo 2 (Datas mais cedo · ES e EF)</title>
+  <desc id="desc">Cálculo de ES e EF da esquerda para a direita. Destaque para o maior EF nas convergências de F, G e I.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="14" markerHeight="14" refX="12" refY="7" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L14,7 L0,14 Z" fill="#176b87"/>
+    </marker>
+    <filter id="shadow" x="-15%" y="-15%" width="130%" height="135%">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#17324d" flood-opacity="0.14"/>
+    </filter>
+  </defs>
+
+  <rect width="1100" height="520" rx="22" fill="#f7f5ef"/>
+
+  <!-- Setas -->
+  <g fill="none" stroke="#176b87" stroke-width="3" marker-end="url(#arrow)">
+    <path d="M105 240 H147"/>
+    <path d="M275 240 H300 V110 H322"/>
+    <path d="M275 240 H322"/>
+    <path d="M275 240 H300 V370 H322"/>
+    <path d="M445 110 H492"/>
+    <path d="M445 240 H470 V285 H492"/>
+    <path d="M445 370 H470 V325 H492"/>
+    <path d="M445 370 H640 V390 H662"/>
+    <path d="M615 110 H640 V160 H662"/>
+    <path d="M615 305 H640 V200 H662"/>
+    <path d="M785 180 H810 V265 H832"/>
+    <path d="M785 390 H810 V305 H832"/>
+    <path d="M955 285 H977"/>
+  </g>
+
+  <!-- Nós com ES e EF -->
+  <g filter="url(#shadow)" font-family="Arial, sans-serif" text-anchor="middle">
+    <!-- Início -->
+    <circle cx="60" cy="240" r="45" fill="#17324d"/>
+    <text x="60" y="235" fill="#ffffff" font-size="22" font-weight="700">Início</text>
+    <text x="60" y="258" fill="#8ed2c5" font-size="16" font-weight="700">t = 0</text>
+
+    <!-- Macro para desenhar nós A a I com subdivisão superior e inferior -->
+    <!-- A (x=155, y=185, w=120, h=110) -->
+    <g>
+      <rect x="155" y="185" width="120" height="110" rx="16" fill="#ffffff" stroke="#176b87" stroke-width="4"/>
+      <text x="215" y="220" fill="#17324d" font-size="24" font-weight="700">A</text>
+      <text x="215" y="244" fill="#176b87" font-size="16" font-weight="700">1 dia</text>
+      <line x1="155" y1="255" x2="275" y2="255" stroke="#c5d0d7" stroke-width="2"/>
+      <line x1="215" y1="255" x2="215" y2="295" stroke="#c5d0d7" stroke-width="2"/>
+      <text x="185" y="281" fill="#1f8a70" font-size="15" font-weight="700">ES 0</text>
+      <text x="245" y="281" fill="#1f8a70" font-size="15" font-weight="700">EF 1</text>
+    </g>
+
+    <!-- B (x=325, y=55, w=120, h=110) -->
+    <g>
+      <rect x="325" y="55" width="120" height="110" rx="16" fill="#ffffff" stroke="#176b87" stroke-width="4"/>
+      <text x="385" y="90" fill="#17324d" font-size="24" font-weight="700">B</text>
+      <text x="385" y="114" fill="#176b87" font-size="16" font-weight="700">4 dias</text>
+      <line x1="325" y1="125" x2="445" y2="125" stroke="#c5d0d7" stroke-width="2"/>
+      <line x1="385" y1="125" x2="385" y2="165" stroke="#c5d0d7" stroke-width="2"/>
+      <text x="355" y="151" fill="#1f8a70" font-size="15" font-weight="700">ES 1</text>
+      <text x="415" y="151" fill="#1f8a70" font-size="15" font-weight="700">EF 5</text>
+    </g>
+
+    <!-- C (x=325, y=185, w=120, h=110) -->
+    <g>
+      <rect x="325" y="185" width="120" height="110" rx="16" fill="#ffffff" stroke="#176b87" stroke-width="4"/>
+      <text x="385" y="220" fill="#17324d" font-size="24" font-weight="700">C</text>
+      <text x="385" y="244" fill="#176b87" font-size="16" font-weight="700">3 dias</text>
+      <line x1="325" y1="255" x2="445" y2="255" stroke="#c5d0d7" stroke-width="2"/>
+      <line x1="385" y1="255" x2="385" y2="295" stroke="#c5d0d7" stroke-width="2"/>
+      <text x="355" y="281" fill="#1f8a70" font-size="15" font-weight="700">ES 1</text>
+      <text x="415" y="281" fill="#1f8a70" font-size="15" font-weight="700">EF 4</text>
+    </g>
+
+    <!-- D (x=325, y=315, w=120, h=110) -->
+    <g>
+      <rect x="325" y="315" width="120" height="110" rx="16" fill="#ffffff" stroke="#176b87" stroke-width="4"/>
+      <text x="385" y="350" fill="#17324d" font-size="24" font-weight="700">D</text>
+      <text x="385" y="374" fill="#176b87" font-size="16" font-weight="700">7 dias</text>
+      <line x1="325" y1="385" x2="445" y2="385" stroke="#c5d0d7" stroke-width="2"/>
+      <line x1="385" y1="385" x2="385" y2="425" stroke="#c5d0d7" stroke-width="2"/>
+      <text x="355" y="411" fill="#1f8a70" font-size="15" font-weight="700">ES 1</text>
+      <text x="415" y="411" fill="#1f8a70" font-size="15" font-weight="700">EF 8</text>
+    </g>
+
+    <!-- E (x=495, y=55, w=120, h=110) -->
+    <g>
+      <rect x="495" y="55" width="120" height="110" rx="16" fill="#ffffff" stroke="#1f8a70" stroke-width="4"/>
+      <text x="555" y="90" fill="#17324d" font-size="24" font-weight="700">E</text>
+      <text x="555" y="114" fill="#1f8a70" font-size="16" font-weight="700">6 dias</text>
+      <line x1="495" y1="125" x2="615" y2="125" stroke="#c5d0d7" stroke-width="2"/>
+      <line x1="555" y1="125" x2="555" y2="165" stroke="#c5d0d7" stroke-width="2"/>
+      <text x="525" y="151" fill="#1f8a70" font-size="15" font-weight="700">ES 5</text>
+      <text x="585" y="151" fill="#1f8a70" font-size="15" font-weight="700">EF 11</text>
+    </g>
+
+    <!-- F (x=495, y=250, w=120, h=110) - Convergência: máx(EF_C=4, EF_D=8) = 8 -->
+    <g>
+      <rect x="495" y="250" width="120" height="110" rx="16" fill="#ffffff" stroke="#1f8a70" stroke-width="4"/>
+      <text x="555" y="285" fill="#17324d" font-size="24" font-weight="700">F</text>
+      <text x="555" y="309" fill="#1f8a70" font-size="16" font-weight="700">2 dias</text>
+      <line x1="495" y1="320" x2="615" y2="320" stroke="#c5d0d7" stroke-width="2"/>
+      <line x1="555" y1="320" x2="555" y2="360" stroke="#c5d0d7" stroke-width="2"/>
+      <text x="525" y="346" fill="#1f8a70" font-size="15" font-weight="700">ES 8</text>
+      <text x="585" y="346" fill="#1f8a70" font-size="15" font-weight="700">EF 10</text>
+    </g>
+
+    <!-- G (x=665, y=125, w=120, h=110) - Convergência: máx(EF_E=11, EF_F=10) = 11 -->
+    <g>
+      <rect x="665" y="125" width="120" height="110" rx="16" fill="#ffffff" stroke="#1f8a70" stroke-width="4"/>
+      <text x="725" y="160" fill="#17324d" font-size="24" font-weight="700">G</text>
+      <text x="725" y="184" fill="#1f8a70" font-size="16" font-weight="700">7 dias</text>
+      <line x1="665" y1="195" x2="785" y2="195" stroke="#c5d0d7" stroke-width="2"/>
+      <line x1="725" y1="195" x2="725" y2="235" stroke="#c5d0d7" stroke-width="2"/>
+      <text x="695" y="221" fill="#1f8a70" font-size="15" font-weight="700">ES 11</text>
+      <text x="755" y="221" fill="#1f8a70" font-size="15" font-weight="700">EF 18</text>
+    </g>
+
+    <!-- H (x=665, y=335, w=120, h=110) -->
+    <g>
+      <rect x="665" y="335" width="120" height="110" rx="16" fill="#ffffff" stroke="#176b87" stroke-width="4"/>
+      <text x="725" y="370" fill="#17324d" font-size="24" font-weight="700">H</text>
+      <text x="725" y="394" fill="#176b87" font-size="16" font-weight="700">9 dias</text>
+      <line x1="665" y1="405" x2="785" y2="405" stroke="#c5d0d7" stroke-width="2"/>
+      <line x1="725" y1="405" x2="725" y2="445" stroke="#c5d0d7" stroke-width="2"/>
+      <text x="695" y="431" fill="#1f8a70" font-size="15" font-weight="700">ES 8</text>
+      <text x="755" y="431" fill="#1f8a70" font-size="15" font-weight="700">EF 17</text>
+    </g>
+
+    <!-- I (x=835, y=230, w=120, h=110) - Convergência: máx(EF_G=18, EF_H=17) = 18 -->
+    <g>
+      <rect x="835" y="230" width="120" height="110" rx="16" fill="#ffffff" stroke="#1f8a70" stroke-width="4"/>
+      <text x="895" y="265" fill="#17324d" font-size="24" font-weight="700">I</text>
+      <text x="895" y="289" fill="#1f8a70" font-size="16" font-weight="700">4 dias</text>
+      <line x1="835" y1="300" x2="955" y2="300" stroke="#c5d0d7" stroke-width="2"/>
+      <line x1="895" y1="300" x2="895" y2="340" stroke="#c5d0d7" stroke-width="2"/>
+      <text x="865" y="326" fill="#1f8a70" font-size="15" font-weight="700">ES 18</text>
+      <text x="925" y="326" fill="#1f8a70" font-size="15" font-weight="700">EF 22</text>
+    </g>
+
+    <!-- Fim -->
+    <circle cx="1030" cy="285" r="45" fill="#17324d"/>
+    <text x="1030" y="280" fill="#ffffff" font-size="22" font-weight="700">Fim</text>
+    <text x="1030" y="303" fill="#8ed2c5" font-size="16" font-weight="700">t = 22</text>
+  </g>
+
+  <!-- Rodapé explicativo -->
+  <g font-family="Arial, sans-serif" font-size="15" fill="#17324d" text-anchor="middle">
+    <text x="550" y="490" font-weight="700" fill="#1f8a70">Convergências na ida: F recebe máx(EF_C=4, EF_D=8)=8 · G recebe máx(EF_E=11, EF_F=10)=11 · I recebe máx(EF_G=18, EF_H=17)=18</text>
+  </g>
+</svg>

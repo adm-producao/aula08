@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 540" role="img" aria-labelledby="title desc">
+  <title id="title">Passagem para frente na rede da estação</title>
+  <desc id="desc">Cada atividade apresenta duração, início mais cedo e término mais cedo. O projeto termina no dia nove.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="14" markerHeight="14" refX="12" refY="7" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L14,7 L0,14 Z" fill="#176b87"/>
+    </marker>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#17324d" flood-opacity="0.14"/>
+    </filter>
+  </defs>
+  <rect width="1000" height="540" rx="26" fill="#f7f5ef"/>
+  <g fill="none" stroke="#176b87" stroke-width="3.5" marker-end="url(#arrow)">
+    <path d="M120 280 H162 V105 H206"/>
+    <path d="M120 280 H206"/>
+    <path d="M120 280 H162 V455 H206"/>
+    <path d="M395 105 H432 V185 H461"/>
+    <path d="M395 280 H432 V230 H461"/>
+    <path d="M395 455 H660 V310 H686"/>
+    <path d="M650 240 H686"/>
+    <path d="M875 280 H896"/>
+  </g>
+  <g filter="url(#shadow)" font-family="Arial, sans-serif" text-anchor="middle">
+    <circle cx="70" cy="280" r="50" fill="#17324d"/>
+    <text x="70" y="274" fill="#ffffff" font-size="27" font-weight="700">Início</text>
+    <text x="70" y="300" fill="#ffffff" font-size="20">t = 0</text>
+
+    <g fill="#ffffff" stroke="#176b87" stroke-width="4.5">
+      <rect x="210" y="40" width="185" height="130" rx="22"/>
+      <rect x="210" y="215" width="185" height="130" rx="22"/>
+      <rect x="210" y="390" width="185" height="130" rx="22"/>
+    </g>
+    <g fill="#ffffff" stroke="#1f8a70" stroke-width="4.5">
+      <rect x="465" y="140" width="185" height="130" rx="22"/>
+      <rect x="690" y="215" width="185" height="130" rx="22"/>
+    </g>
+
+    <g fill="#17324d" font-size="32" font-weight="700">
+      <text x="302.5" y="76">A</text><text x="302.5" y="251">B</text><text x="302.5" y="426">C</text>
+      <text x="557.5" y="176">D</text><text x="782.5" y="251">E</text>
+    </g>
+    <g font-size="22">
+      <text x="302.5" y="108" fill="#176b87">2 dias</text>
+      <text x="302.5" y="283" fill="#176b87">4 dias</text>
+      <text x="302.5" y="458" fill="#176b87">3 dias</text>
+      <text x="557.5" y="208" fill="#1f8a70">3 dias</text>
+      <text x="782.5" y="283" fill="#1f8a70">2 dias</text>
+    </g>
+    <g stroke="#c5d0d7" stroke-width="2">
+      <line x1="210" y1="120" x2="395" y2="120"/><line x1="302.5" y1="120" x2="302.5" y2="170"/>
+      <line x1="210" y1="295" x2="395" y2="295"/><line x1="302.5" y1="295" x2="302.5" y2="345"/>
+      <line x1="210" y1="470" x2="395" y2="470"/><line x1="302.5" y1="470" x2="302.5" y2="520"/>
+      <line x1="465" y1="220" x2="650" y2="220"/><line x1="557.5" y1="220" x2="557.5" y2="270"/>
+      <line x1="690" y1="295" x2="875" y2="295"/><line x1="782.5" y1="295" x2="782.5" y2="345"/>
+    </g>
+    <g fill="#17324d" font-size="21" font-weight="700">
+      <text x="256" y="151">ES 0</text><text x="349" y="151">EF 2</text>
+      <text x="256" y="326">ES 0</text><text x="349" y="326">EF 4</text>
+      <text x="256" y="501">ES 0</text><text x="349" y="501">EF 3</text>
+      <text x="511" y="251">ES 4</text><text x="604" y="251">EF 7</text>
+      <text x="736" y="326">ES 7</text><text x="829" y="326">EF 9</text>
+    </g>
+
+    <circle cx="950" cy="280" r="50" fill="#17324d"/>
+    <text x="950" y="274" fill="#ffffff" font-size="27" font-weight="700">Fim</text>
+    <text x="950" y="300" fill="#ffffff" font-size="20">t = 9</text>
+  </g>
+</svg>

@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1150 510" role="img" aria-labelledby="title desc">
+  <title id="title">Gráfico de Gantt com caminho crítico e folgas do Exemplo 2</title>
+  <desc id="desc">Gantt das 9 atividades no horizonte de 22 dias. O caminho crítico A-B-E-G-I forma uma cadeia contínua e as atividades C, D, F e H apresentam barras tracejadas de folga.</desc>
+
+  <rect width="1150" height="510" rx="22" fill="#f7f5ef"/>
+
+  <!-- Legenda Superior -->
+  <g font-family="Arial, sans-serif" font-size="16" font-weight="700">
+    <rect x="110" y="20" width="24" height="18" rx="4" fill="#ba4a5a"/>
+    <text x="144" y="34" fill="#17324d">Atividade Crítica (Folga = 0)</text>
+
+    <rect x="440" y="20" width="24" height="18" rx="4" fill="#176b87"/>
+    <text x="474" y="34" fill="#17324d">Não Crítica (ES → EF)</text>
+
+    <rect x="770" y="20" width="24" height="18" rx="4" fill="#fdf6e4" stroke="#d39b2a" stroke-width="2" stroke-dasharray="4,3"/>
+    <text x="804" y="34" fill="#17324d">Folga Total (EF → LF)</text>
+  </g>
+
+  <!-- Área do gráfico: x de 180 a 1060 (22 dias -> 40px por dia), y de 55 a 425 -->
+  <rect x="180" y="55" width="880" height="370" fill="#ffffff" stroke="#c5d0d7" stroke-width="2"/>
+
+  <!-- Linhas verticais a cada 2 dias (grade) -->
+  <g stroke="#edf1f4" stroke-width="1.5">
+    <line x1="220" y1="55" x2="220" y2="425"/><line x1="260" y1="55" x2="260" y2="425"/><line x1="300" y1="55" x2="300" y2="425"/><line x1="340" y1="55" x2="340" y2="425"/><line x1="380" y1="55" x2="380" y2="425"/><line x1="420" y1="55" x2="420" y2="425"/><line x1="460" y1="55" x2="460" y2="425"/><line x1="500" y1="55" x2="500" y2="425"/><line x1="540" y1="55" x2="540" y2="425"/><line x1="580" y1="55" x2="580" y2="425"/><line x1="620" y1="55" x2="620" y2="425"/><line x1="660" y1="55" x2="660" y2="425"/><line x1="700" y1="55" x2="700" y2="425"/><line x1="740" y1="55" x2="740" y2="425"/><line x1="780" y1="55" x2="780" y2="425"/><line x1="820" y1="55" x2="820" y2="425"/><line x1="860" y1="55" x2="860" y2="425"/><line x1="900" y1="55" x2="900" y2="425"/><line x1="940" y1="55" x2="940" y2="425"/><line x1="980" y1="55" x2="980" y2="425"/><line x1="1020" y1="55" x2="1020" y2="425"/>
+  </g>
+
+  <!-- Linhas divisórias horizontais para as 9 atividades -->
+  <g stroke="#edf1f4" stroke-width="1.5">
+    <line x1="30" y1="96" x2="1060" y2="96"/><line x1="30" y1="137" x2="1060" y2="137"/><line x1="30" y1="178" x2="1060" y2="178"/><line x1="30" y1="219" x2="1060" y2="219"/><line x1="30" y1="260" x2="1060" y2="260"/><line x1="30" y1="301" x2="1060" y2="301"/><line x1="30" y1="342" x2="1060" y2="342"/><line x1="30" y1="383" x2="1060" y2="383"/>
+  </g>
+
+  <!-- Nomes das atividades na lateral esquerda -->
+  <g font-family="Arial, sans-serif" font-size="17" font-weight="700" fill="#17324d">
+    <text x="35" y="82" fill="#ba4a5a">A (1d) · Crítica</text>
+    <text x="35" y="123" fill="#ba4a5a">B (4d) · Crítica</text>
+    <text x="35" y="164">C (3d)</text>
+    <text x="35" y="205">D (7d)</text>
+    <text x="35" y="246" fill="#ba4a5a">E (6d) · Crítica</text>
+    <text x="35" y="287">F (2d)</text>
+    <text x="35" y="328" fill="#ba4a5a">G (7d) · Crítica</text>
+    <text x="35" y="369">H (9d)</text>
+    <text x="35" y="410" fill="#ba4a5a">I (4d) · Crítica</text>
+  </g>
+
+  <!-- Barras do Gantt -->
+  <!-- Formula: x = 180 + dia * 40; w = dur * 40; y = 55 + i*41 + 7, h = 27 -->
+  <g font-family="Arial, sans-serif" font-size="14" font-weight="700" text-anchor="middle">
+    <!-- A: 0 a 1 (180 a 220), Crítica -->
+    <rect x="180" y="63" width="40" height="26" rx="5" fill="#ba4a5a"/>
+    <text x="200" y="81" fill="#ffffff">A</text>
+
+    <!-- B: 1 a 5 (220 a 380), Crítica -->
+    <rect x="220" y="104" width="160" height="26" rx="5" fill="#ba4a5a"/>
+    <text x="300" y="122" fill="#ffffff">B (1 → 5)</text>
+
+    <!-- C: 1 a 4 (220 a 340), Folga 4 a 9 (340 a 540) -->
+    <rect x="340" y="145" width="200" height="26" rx="5" fill="#fdf6e4" stroke="#d39b2a" stroke-width="2" stroke-dasharray="5,3"/>
+    <text x="440" y="163" fill="#9a6b09">Folga C = 5d (LF=9)</text>
+    <rect x="220" y="145" width="120" height="26" rx="5" fill="#176b87"/>
+    <text x="280" y="163" fill="#ffffff">C (1 → 4)</text>
+
+    <!-- D: 1 a 8 (220 a 500), Folga 8 a 9 (500 a 540) -->
+    <rect x="500" y="186" width="40" height="26" rx="5" fill="#fdf6e4" stroke="#d39b2a" stroke-width="2" stroke-dasharray="5,3"/>
+    <text x="520" y="204" fill="#9a6b09">FT=1</text>
+    <rect x="220" y="186" width="280" height="26" rx="5" fill="#176b87"/>
+    <text x="360" y="204" fill="#ffffff">D (1 → 8)</text>
+
+    <!-- E: 5 a 11 (380 a 620), Crítica -->
+    <rect x="380" y="227" width="240" height="26" rx="5" fill="#ba4a5a"/>
+    <text x="500" y="245" fill="#ffffff">E (5 → 11)</text>
+
+    <!-- F: 8 a 10 (500 a 580), Folga 10 a 11 (580 a 620) -->
+    <rect x="580" y="268" width="40" height="26" rx="5" fill="#fdf6e4" stroke="#d39b2a" stroke-width="2" stroke-dasharray="5,3"/>
+    <text x="600" y="286" fill="#9a6b09">FT=1</text>
+    <rect x="500" y="268" width="80" height="26" rx="5" fill="#176b87"/>
+    <text x="540" y="286" fill="#ffffff">F (8→10)</text>
+
+    <!-- G: 11 a 18 (620 a 900), Crítica -->
+    <rect x="620" y="309" width="280" height="26" rx="5" fill="#ba4a5a"/>
+    <text x="760" y="327" fill="#ffffff">G (11 → 18)</text>
+
+    <!-- H: 8 a 17 (500 a 860), Folga 17 a 18 (860 a 900) -->
+    <rect x="860" y="350" width="40" height="26" rx="5" fill="#fdf6e4" stroke="#d39b2a" stroke-width="2" stroke-dasharray="5,3"/>
+    <text x="880" y="368" fill="#9a6b09">FT=1</text>
+    <rect x="500" y="350" width="360" height="26" rx="5" fill="#176b87"/>
+    <text x="680" y="368" fill="#ffffff">H (8 → 17)</text>
+
+    <!-- I: 18 a 22 (900 a 1060), Crítica -->
+    <rect x="900" y="391" width="160" height="26" rx="5" fill="#ba4a5a"/>
+    <text x="980" y="409" fill="#ffffff">I (18 → 22)</text>
+  </g>
+
+  <!-- Escala de tempo inferior -->
+  <g font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#17324d" text-anchor="middle">
+    <text x="180" y="448">0</text><text x="260" y="448">2</text><text x="340" y="448">4</text><text x="420" y="448">6</text><text x="500" y="448">8</text><text x="580" y="448">10</text><text x="660" y="448">12</text><text x="740" y="448">14</text><text x="820" y="448">16</text><text x="900" y="448">18</text><text x="980" y="448">20</text><text x="1060" y="448">22</text>
+    <text x="620" y="485" font-size="16" fill="#176b87">Tempo em dias · Caminho crítico A → B → E → G → I determina o prazo de 22 dias</text>
+  </g>
+</svg>

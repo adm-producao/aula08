@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1150 590" role="img" aria-labelledby="title desc">
+  <title id="title">Arquitetura Hierárquica e Conectividade das Ferramentas do PCP</title>
+  <desc id="desc">Estrutura integrada do PCP mostrando a conexão entre Estratégia de Produção, Previsão de Demanda, PAP, PMP, MRP, Programação de Operações e Gestão de Projetos (PERT/CPM).</desc>
+  <defs>
+    <marker id="arr-blue" markerWidth="14" markerHeight="14" refX="12" refY="7" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L14,7 L0,14 Z" fill="#176b87"/>
+    </marker>
+    <marker id="arr-gold" markerWidth="14" markerHeight="14" refX="12" refY="7" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L14,7 L0,14 Z" fill="#d39b2a"/>
+    </marker>
+    <marker id="arr-rose" markerWidth="16" markerHeight="16" refX="13.5" refY="8" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L16,8 L0,16 Z" fill="#ba4a5a"/>
+    </marker>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="125%">
+      <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#17324d" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+
+  <rect width="1150" height="590" rx="22" fill="#f7f5ef"/>
+
+  <!-- Coluna da Esquerda: Horizontes e Níveis -->
+  <g font-family="Arial, sans-serif">
+    <!-- Nível Estratégico -->
+    <rect x="30" y="25" width="135" height="110" rx="12" fill="#142c46"/>
+    <text x="97" y="64" fill="#ffffff" font-size="15" font-weight="700" text-anchor="middle">ESTRATÉGICO</text>
+    <text x="97" y="88" fill="#8ed2c5" font-size="13" font-weight="700" text-anchor="middle">Longo Prazo</text>
+    <text x="97" y="108" fill="#ffffff" font-size="12" text-anchor="middle">(1 a 5 anos)</text>
+
+    <!-- Nível Tático -->
+    <rect x="30" y="150" width="135" height="200" rx="12" fill="#176b87"/>
+    <text x="97" y="230" fill="#ffffff" font-size="15" font-weight="700" text-anchor="middle">TÁTICO</text>
+    <text x="97" y="254" fill="#8ed2c5" font-size="13" font-weight="700" text-anchor="middle">Médio Prazo</text>
+    <text x="97" y="274" fill="#ffffff" font-size="12" text-anchor="middle">(meses a 1 ano)</text>
+
+    <!-- Nível Operacional -->
+    <rect x="30" y="365" width="135" height="200" rx="12" fill="#1f8a70"/>
+    <text x="97" y="445" fill="#ffffff" font-size="15" font-weight="700" text-anchor="middle">OPERACIONAL</text>
+    <text x="97" y="469" fill="#fff1cc" font-size="13" font-weight="700" text-anchor="middle">Curto Prazo</text>
+    <text x="97" y="489" fill="#ffffff" font-size="12" text-anchor="middle">(semanas a dias)</text>
+  </g>
+
+  <!-- Blocos Centrais (Fluxo Vertical) -->
+  <g filter="url(#shadow)" font-family="Arial, sans-serif">
+    <!-- 1. Previsão de Demanda -->
+    <rect x="205" y="25" width="295" height="110" rx="14" fill="#ffffff" stroke="#142c46" stroke-width="3"/>
+    <text x="352" y="55" fill="#142c46" font-size="17" font-weight="700" text-anchor="middle">1. Previsão de Demanda</text>
+    <text x="352" y="77" fill="#687786" font-size="13" text-anchor="middle">Médias Móveis · Suavização Exp. · Regressão</text>
+    <text x="352" y="97" fill="#176b87" font-size="12.5" font-weight="700" text-anchor="middle">Entrada: Histórico de Vendas e Mercado</text>
+    <text x="352" y="117" fill="#ba4a5a" font-size="12" text-anchor="middle">Monitoramento de erros: MAD, MSE, MAPE</text>
+
+    <!-- 2. Planejamento Agregado (PAP) -->
+    <rect x="205" y="150" width="295" height="90" rx="14" fill="#ffffff" stroke="#176b87" stroke-width="3"/>
+    <text x="352" y="178" fill="#142c46" font-size="17" font-weight="700" text-anchor="middle">2. Planejamento Agregado (PAP)</text>
+    <text x="352" y="201" fill="#687786" font-size="13" text-anchor="middle">Estratégias: Acompanhamento vs. Nivelamento</text>
+    <text x="352" y="222" fill="#176b87" font-size="12.5" font-weight="700" text-anchor="middle">Capacidade Global · Turnos · Horas Extras</text>
+
+    <!-- 3. Plano Mestre (PMP / MPS) -->
+    <rect x="205" y="255" width="295" height="95" rx="14" fill="#ffffff" stroke="#176b87" stroke-width="3"/>
+    <text x="352" y="283" fill="#142c46" font-size="17" font-weight="700" text-anchor="middle">3. Plano Mestre (PMP / MPS)</text>
+    <text x="352" y="306" fill="#687786" font-size="13" text-anchor="middle">Itens Finais · Lotes · Estoque Projetado</text>
+    <text x="352" y="327" fill="#d39b2a" font-size="13" font-weight="700" text-anchor="middle">Time Fences (Congelado/Livre) · ATP</text>
+
+    <!-- 4. MRP (Explosão de Materiais) -->
+    <rect x="205" y="365" width="295" height="95" rx="14" fill="#ffffff" stroke="#1f8a70" stroke-width="3"/>
+    <text x="352" y="393" fill="#142c46" font-size="17" font-weight="700" text-anchor="middle">4. MRP · Explosão de Materiais</text>
+    <text x="352" y="416" fill="#687786" font-size="13" text-anchor="middle">Estrutura do Produto (BOM) · Lead Times</text>
+    <text x="352" y="437" fill="#1f8a70" font-size="13" font-weight="700" text-anchor="middle">Liberação de Ordens de Compra e Fabricação</text>
+
+    <!-- 5. Programação e Sequenciamento -->
+    <rect x="205" y="475" width="295" height="95" rx="14" fill="#ffffff" stroke="#1f8a70" stroke-width="3"/>
+    <text x="352" y="503" fill="#142c46" font-size="17" font-weight="700" text-anchor="middle">5. Programação e Sequenciamento</text>
+    <text x="352" y="526" fill="#687786" font-size="13" text-anchor="middle">1 Máq: FIFO, SPT, EDD · 2 Máq: Johnson</text>
+    <text x="352" y="547" fill="#1f8a70" font-size="12.5" font-weight="700" text-anchor="middle">Prioridades no Chão de Fábrica · Makespan</text>
+  </g>
+
+  <!-- Setas do Fluxo Central Descendente -->
+  <g fill="none" stroke="#176b87" stroke-width="3" marker-end="url(#arr-blue)">
+    <path d="M352 135 V144"/>
+    <path d="M352 240 V249"/>
+    <path d="M352 350 V359"/>
+    <path d="M352 460 V469"/>
+  </g>
+
+  <!-- Coluna da Direita: Suporte Lateral e Projetos (PERT/CPM) -->
+  <g filter="url(#shadow)" font-family="Arial, sans-serif">
+    <!-- Parâmetros de Estoque (Alimenta MRP) -->
+    <rect x="545" y="150" width="255" height="135" rx="14" fill="#ffffff" stroke="#d39b2a" stroke-width="2.5"/>
+    <text x="672" y="182" fill="#9a6b09" font-size="16" font-weight="700" text-anchor="middle">Políticas de Estoque</text>
+    <text x="672" y="208" fill="#142c46" font-size="13" text-anchor="middle">• Curva ABC (priorização de itens)</text>
+    <text x="672" y="232" fill="#142c46" font-size="13" text-anchor="middle">• Lote Econômico (LEC / EOQ)</text>
+    <text x="672" y="256" fill="#142c46" font-size="13" text-anchor="middle">• Estoque de Segurança &amp; Ponto Pedido</text>
+
+    <!-- PROJETOS: PERT / CPM (Altera a Capacidade e o Sistema) -->
+    <rect x="835" y="150" width="285" height="310" rx="16" fill="#fff8f8" stroke="#ba4a5a" stroke-width="3.5"/>
+    <text x="977" y="182" fill="#ba4a5a" font-size="18" font-weight="700" text-anchor="middle">Projetos · PERT / CPM</text>
+    <text x="977" y="206" fill="#17324d" font-size="13.5" font-weight="700" text-anchor="middle">MUDANÇAS ESTRUTURAIS NO PCP</text>
+    
+    <g font-size="13" fill="#17324d">
+      <text x="855" y="240">• Implantação de novas células e linhas</text>
+      <text x="855" y="265">• Paradas de manutenção (shutdowns)</text>
+      <text x="855" y="290">• Lançamento de novos produtos</text>
+      <text x="855" y="315">• Redes AON, Caminho Crítico e Folgas</text>
+      <text x="855" y="340">• Decisões de aceleração (Crashing)</text>
+      <text x="855" y="365">• Incerteza e variância com PERT (o, m, p)</text>
+    </g>
+
+    <rect x="850" y="390" width="255" height="52" rx="10" fill="#fbecee" stroke="#ba4a5a" stroke-width="1.5"/>
+    <text x="977" y="412" fill="#ba4a5a" font-size="12" font-weight="700" text-anchor="middle">Se o projeto atrasa 1 semana:</text>
+    <text x="977" y="430" fill="#17324d" font-size="11.5" text-anchor="middle">PMP, MRP e Chão de fábrica precisam ser revistos!</text>
+  </g>
+
+  <!-- Conexões Horizontais -->
+  <g fill="none" stroke="#d39b2a" stroke-width="2.5" stroke-dasharray="5,4" marker-end="url(#arr-gold)">
+    <!-- Parâmetros de estoque alimentando MRP -->
+    <path d="M545 220 H520 V405 H502"/>
+  </g>
+
+  <g fill="none" stroke="#ba4a5a" stroke-width="2.5" stroke-dasharray="5,4" marker-end="url(#arr-rose)">
+    <!-- Projetos alimentando PMP e Capacidade -->
+    <path d="M835 300 H502"/>
+  </g>
+
+  <!-- Feedback do Chão de Fábrica (Seta de Retorno ascendente à esquerda) -->
+  <g fill="none" stroke="#1f8a70" stroke-width="2.5" stroke-dasharray="5,4">
+    <path d="M205 522 H185 V195 H200" marker-end="url(#arr-blue)"/>
+  </g>
+  <text x="168" y="360" fill="#1f8a70" font-family="Arial, sans-serif" font-size="11.5" font-weight="700" transform="rotate(-90 168 360)" text-anchor="middle">Feedback da Execução (Horas reais, estoques e gargalos)</text>
+</svg>

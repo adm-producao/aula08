@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1150 420" role="img" aria-labelledby="title desc">
+  <title id="title">Incerteza e assimetria nas três estimativas do método PERT</title>
+  <desc id="desc">Representação didática das estimativas otimista (o), mais provável (m) e pessimista (p), destacando o peso 4 para m e o deslocamento da duração esperada te quando há cauda longa de atraso.</desc>
+
+  <rect width="1150" height="420" rx="22" fill="#f7f5ef"/>
+
+  <!-- Painel Esquerdo: Ponderação 1 : 4 : 1 -->
+  <rect x="25" y="20" width="510" height="380" rx="18" fill="#ffffff" stroke="#176b87" stroke-width="3.5"/>
+  <rect x="25" y="20" width="510" height="54" rx="18" fill="#176b87"/>
+  <text x="280" y="55" font-family="Arial, sans-serif" font-size="21" font-weight="700" fill="#ffffff" text-anchor="middle">Média ponderada no PERT (pesos 1 : 4 : 1)</text>
+
+  <g font-family="Arial, sans-serif" text-anchor="middle">
+    <!-- Caixas de peso -->
+    <rect x="52" y="100" width="128" height="90" rx="14" fill="#e5f2ee" stroke="#1f8a70" stroke-width="3"/>
+    <text x="116" y="134" fill="#1f8a70" font-size="24" font-weight="700">1 × o</text>
+    <text x="116" y="159" fill="#17324d" font-size="16.5" font-weight="700">Otimista</text>
+    <text x="116" y="179" fill="#687786" font-size="13.5">melhor cenário</text>
+
+    <rect x="196" y="92" width="168" height="104" rx="14" fill="#fdf6e4" stroke="#d39b2a" stroke-width="4"/>
+    <text x="280" y="130" fill="#9a6b09" font-size="27" font-weight="700">4 × m</text>
+    <text x="280" y="157" fill="#17324d" font-size="17" font-weight="700">Mais provável</text>
+    <text x="280" y="179" fill="#687786" font-size="13.5">moda (peso 4)</text>
+
+    <rect x="380" y="100" width="128" height="90" rx="14" fill="#fbecee" stroke="#ba4a5a" stroke-width="3"/>
+    <text x="444" y="134" fill="#ba4a5a" font-size="24" font-weight="700">1 × p</text>
+    <text x="444" y="159" fill="#17324d" font-size="16.5" font-weight="700">Pessimista</text>
+    <text x="444" y="179" fill="#687786" font-size="13.5">pior cenário</text>
+
+    <!-- Fórmulas -->
+    <rect x="52" y="214" width="456" height="74" rx="14" fill="#17324d"/>
+    <text x="280" y="245" fill="#ffffff" font-size="21" font-weight="700">Duração esperada: tₑ = (o + 4m + p) ÷ 6</text>
+    <text x="280" y="273" fill="#8ed2c5" font-size="16.5">Desvio-padrão: σ = (p − o) ÷ 6  |  Variância: σ² = [(p − o) ÷ 6]²</text>
+
+    <rect x="52" y="306" width="456" height="72" rx="12" fill="#f7f5ef"/>
+    <text x="280" y="334" fill="#17324d" font-size="17" font-weight="700">Quanto maior a distância (p − o), maior o risco!</text>
+    <text x="280" y="359" fill="#687786" font-size="15">Etapas com alta amplitude exigem contingência.</text>
+  </g>
+
+  <!-- Painel Direito: Exemplo da Instalação (Assimetria) -->
+  <rect x="565" y="20" width="560" height="380" rx="18" fill="#ffffff" stroke="#ba4a5a" stroke-width="3.5"/>
+  <rect x="565" y="20" width="560" height="54" rx="18" fill="#ba4a5a"/>
+  <text x="845" y="55" font-family="Arial, sans-serif" font-size="21" font-weight="700" fill="#ffffff" text-anchor="middle">Assimetria · "Instalar estação" (o = 4, m = 5, p = 12)</text>
+
+  <g>
+    <path d="M 640 272 C 655 195, 670 128, 690 128 C 735 128, 840 258, 1040 272 Z" fill="#fbecee" stroke="#ba4a5a" stroke-width="4"/>
+    <line x1="600" y1="272" x2="1085" y2="272" stroke="#17324d" stroke-width="3"/>
+
+    <line x1="640" y1="257" x2="640" y2="284" stroke="#1f8a70" stroke-width="4"/>
+    <line x1="690" y1="128" x2="690" y2="284" stroke="#d39b2a" stroke-width="4" stroke-dasharray="6,4"/>
+    <line x1="740" y1="150" x2="740" y2="284" stroke="#17324d" stroke-width="4"/>
+    <line x1="1040" y1="257" x2="1040" y2="284" stroke="#ba4a5a" stroke-width="4"/>
+    <line x1="740" y1="150" x2="775" y2="128" stroke="#17324d" stroke-width="2.5"/>
+  </g>
+
+  <g font-family="Arial, sans-serif" text-anchor="middle">
+    <text x="635" y="306" fill="#1f8a70" font-size="18" font-weight="700">o = 4d</text>
+    <text x="665" y="112" fill="#9a6b09" font-size="18" font-weight="700">m = 5d (moda)</text>
+    <text x="845" y="124" fill="#17324d" font-size="18.5" font-weight="700">tₑ = 6,0d (média)</text>
+    <text x="1040" y="306" fill="#ba4a5a" font-size="18" font-weight="700">p = 12d</text>
+
+    <text x="955" y="205" fill="#ba4a5a" font-size="16.5" font-weight="700">Cauda longa (+7 dias)</text>
+
+    <rect x="595" y="324" width="500" height="58" rx="12" fill="#fdf6e4" stroke="#d39b2a" stroke-width="2"/>
+    <text x="845" y="348" fill="#17324d" font-size="17" font-weight="700">Por que tₑ (6,0 dias) é maior que m (5 dias)?</text>
+    <text x="845" y="370" fill="#17324d" font-size="15.5">Porque o risco de atraso (+7d) supera a chance de ganho (−1d).</text>
+  </g>
+</svg>

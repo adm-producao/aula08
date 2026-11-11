@@ -1,0 +1,183 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 550" role="img" aria-labelledby="title desc">
+  <title id="title">Passagem para trás e caminho crítico no Exemplo 2</title>
+  <desc id="desc">Datas mais tarde (LS e LF), folgas e destaque para o caminho crítico A-B-E-G-I com 22 dias de duração.</desc>
+  <defs>
+    <marker id="arrow-muted" markerWidth="13" markerHeight="13" refX="11" refY="6.5" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L13,6.5 L0,13 Z" fill="#9aa7b2"/>
+    </marker>
+    <marker id="arrow-critical" markerWidth="16" markerHeight="16" refX="13.5" refY="8" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L16,8 L0,16 Z" fill="#ba4a5a"/>
+    </marker>
+    <filter id="shadow" x="-15%" y="-15%" width="130%" height="135%">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#17324d" flood-opacity="0.14"/>
+    </filter>
+  </defs>
+
+  <rect width="1100" height="550" rx="22" fill="#f7f5ef"/>
+
+  <!-- Setas não críticas (cinza) -->
+  <g fill="none" stroke="#9aa7b2" stroke-width="2.8" marker-end="url(#arrow-muted)">
+    <path d="M275 240 H322"/>
+    <path d="M275 240 H300 V370 H322"/>
+    <path d="M445 240 H470 V285 H492"/>
+    <path d="M445 370 H470 V325 H492"/>
+    <path d="M445 370 H640 V390 H662"/>
+    <path d="M615 305 H640 V200 H662"/>
+    <path d="M785 390 H810 V305 H832"/>
+  </g>
+
+  <!-- Setas críticas (vermelho bordô destacado) -->
+  <g fill="none" stroke="#ba4a5a" stroke-width="4.5" marker-end="url(#arrow-critical)">
+    <path d="M105 240 H147"/>
+    <path d="M275 240 H300 V110 H322"/>
+    <path d="M445 110 H492"/>
+    <path d="M615 110 H640 V160 H662"/>
+    <path d="M785 180 H810 V265 H832"/>
+    <path d="M955 285 H977"/>
+  </g>
+
+  <!-- Nós com 4 quadrantes (ES, EF / LS, LF) -->
+  <g filter="url(#shadow)" font-family="Arial, sans-serif" text-anchor="middle">
+    <!-- Início -->
+    <circle cx="60" cy="240" r="45" fill="#17324d"/>
+    <text x="60" y="235" fill="#ffffff" font-size="22" font-weight="700">Início</text>
+    <text x="60" y="258" fill="#8ed2c5" font-size="16" font-weight="700">t = 0</text>
+
+    <!-- Atividade A (CRÍTICA) -->
+    <g>
+      <rect x="155" y="175" width="120" height="130" rx="16" fill="#fff8f8" stroke="#ba4a5a" stroke-width="4.5"/>
+      <text x="215" y="206" fill="#17324d" font-size="24" font-weight="700">A</text>
+      <text x="215" y="228" fill="#ba4a5a" font-size="15" font-weight="700">1 dia · FT=0</text>
+      <line x1="155" y1="237" x2="275" y2="237" stroke="#c5d0d7" stroke-width="1.8"/>
+      <line x1="155" y1="270" x2="275" y2="270" stroke="#c5d0d7" stroke-width="1.8"/>
+      <line x1="215" y1="237" x2="215" y2="305" stroke="#c5d0d7" stroke-width="1.8"/>
+      <text x="185" y="259" fill="#17324d" font-size="14" font-weight="700">ES 0</text>
+      <text x="245" y="259" fill="#17324d" font-size="14" font-weight="700">EF 1</text>
+      <text x="185" y="293" fill="#ba4a5a" font-size="14" font-weight="700">LS 0</text>
+      <text x="245" y="293" fill="#ba4a5a" font-size="14" font-weight="700">LF 1</text>
+    </g>
+
+    <!-- Atividade B (CRÍTICA) -->
+    <g>
+      <rect x="325" y="45" width="120" height="130" rx="16" fill="#fff8f8" stroke="#ba4a5a" stroke-width="4.5"/>
+      <text x="385" y="76" fill="#17324d" font-size="24" font-weight="700">B</text>
+      <text x="385" y="98" fill="#ba4a5a" font-size="15" font-weight="700">4 dias · FT=0</text>
+      <line x1="325" y1="107" x2="445" y2="107" stroke="#c5d0d7" stroke-width="1.8"/>
+      <line x1="325" y1="140" x2="445" y2="140" stroke="#c5d0d7" stroke-width="1.8"/>
+      <line x1="385" y1="107" x2="385" y2="175" stroke="#c5d0d7" stroke-width="1.8"/>
+      <text x="355" y="129" fill="#17324d" font-size="14" font-weight="700">ES 1</text>
+      <text x="415" y="129" fill="#17324d" font-size="14" font-weight="700">EF 5</text>
+      <text x="355" y="163" fill="#ba4a5a" font-size="14" font-weight="700">LS 1</text>
+      <text x="415" y="163" fill="#ba4a5a" font-size="14" font-weight="700">LF 5</text>
+    </g>
+
+    <!-- Atividade C (NÃO CRÍTICA, FT=5) -->
+    <g>
+      <rect x="325" y="185" width="120" height="130" rx="16" fill="#ffffff" stroke="#9aa7b2" stroke-width="3.5"/>
+      <text x="385" y="216" fill="#17324d" font-size="24" font-weight="700">C</text>
+      <text x="385" y="238" fill="#687786" font-size="15" font-weight="700">3 dias · FT=5</text>
+      <line x1="325" y1="247" x2="445" y2="247" stroke="#c5d0d7" stroke-width="1.8"/>
+      <line x1="325" y1="280" x2="445" y2="280" stroke="#c5d0d7" stroke-width="1.8"/>
+      <line x1="385" y1="247" x2="385" y2="315" stroke="#c5d0d7" stroke-width="1.8"/>
+      <text x="355" y="269" fill="#17324d" font-size="14" font-weight="700">ES 1</text>
+      <text x="415" y="269" fill="#17324d" font-size="14" font-weight="700">EF 4</text>
+      <text x="355" y="303" fill="#687786" font-size="14" font-weight="700">LS 6</text>
+      <text x="415" y="303" fill="#687786" font-size="14" font-weight="700">LF 9</text>
+    </g>
+
+    <!-- Atividade D (NÃO CRÍTICA, FT=1) -->
+    <g>
+      <rect x="325" y="325" width="120" height="130" rx="16" fill="#ffffff" stroke="#9aa7b2" stroke-width="3.5"/>
+      <text x="385" y="356" fill="#17324d" font-size="24" font-weight="700">D</text>
+      <text x="385" y="378" fill="#687786" font-size="15" font-weight="700">7 dias · FT=1</text>
+      <line x1="325" y1="387" x2="445" y2="387" stroke="#c5d0d7" stroke-width="1.8"/>
+      <line x1="325" y1="420" x2="445" y2="420" stroke="#c5d0d7" stroke-width="1.8"/>
+      <line x1="385" y1="387" x2="385" y2="455" stroke="#c5d0d7" stroke-width="1.8"/>
+      <text x="355" y="409" fill="#17324d" font-size="14" font-weight="700">ES 1</text>
+      <text x="415" y="409" fill="#17324d" font-size="14" font-weight="700">EF 8</text>
+      <text x="355" y="443" fill="#687786" font-size="14" font-weight="700">LS 2</text>
+      <text x="415" y="443" fill="#687786" font-size="14" font-weight="700">LF 9</text>
+    </g>
+
+    <!-- Atividade E (CRÍTICA) -->
+    <g>
+      <rect x="495" y="45" width="120" height="130" rx="16" fill="#fff8f8" stroke="#ba4a5a" stroke-width="4.5"/>
+      <text x="555" y="76" fill="#17324d" font-size="24" font-weight="700">E</text>
+      <text x="555" y="98" fill="#ba4a5a" font-size="15" font-weight="700">6 dias · FT=0</text>
+      <line x1="495" y1="107" x2="615" y2="107" stroke="#c5d0d7" stroke-width="1.8"/>
+      <line x1="495" y1="140" x2="615" y2="140" stroke="#c5d0d7" stroke-width="1.8"/>
+      <line x1="555" y1="107" x2="555" y2="175" stroke="#c5d0d7" stroke-width="1.8"/>
+      <text x="525" y="129" fill="#17324d" font-size="14" font-weight="700">ES 5</text>
+      <text x="585" y="129" fill="#17324d" font-size="14" font-weight="700">EF 11</text>
+      <text x="525" y="163" fill="#ba4a5a" font-size="14" font-weight="700">LS 5</text>
+      <text x="585" y="163" fill="#ba4a5a" font-size="14" font-weight="700">LF 11</text>
+    </g>
+
+    <!-- Atividade F (NÃO CRÍTICA, FT=1) -->
+    <g>
+      <rect x="495" y="240" width="120" height="130" rx="16" fill="#ffffff" stroke="#9aa7b2" stroke-width="3.5"/>
+      <text x="555" y="271" fill="#17324d" font-size="24" font-weight="700">F</text>
+      <text x="555" y="293" fill="#687786" font-size="15" font-weight="700">2 dias · FT=1</text>
+      <line x1="495" y1="302" x2="615" y2="302" stroke="#c5d0d7" stroke-width="1.8"/>
+      <line x1="495" y1="335" x2="615" y2="335" stroke="#c5d0d7" stroke-width="1.8"/>
+      <line x1="555" y1="302" x2="555" y2="370" stroke="#c5d0d7" stroke-width="1.8"/>
+      <text x="525" y="324" fill="#17324d" font-size="14" font-weight="700">ES 8</text>
+      <text x="585" y="324" fill="#17324d" font-size="14" font-weight="700">EF 10</text>
+      <text x="525" y="358" fill="#687786" font-size="14" font-weight="700">LS 9</text>
+      <text x="585" y="358" fill="#687786" font-size="14" font-weight="700">LF 11</text>
+    </g>
+
+    <!-- Atividade G (CRÍTICA) -->
+    <g>
+      <rect x="665" y="115" width="120" height="130" rx="16" fill="#fff8f8" stroke="#ba4a5a" stroke-width="4.5"/>
+      <text x="725" y="146" fill="#17324d" font-size="24" font-weight="700">G</text>
+      <text x="725" y="168" fill="#ba4a5a" font-size="15" font-weight="700">7 dias · FT=0</text>
+      <line x1="665" y1="177" x2="785" y2="177" stroke="#c5d0d7" stroke-width="1.8"/>
+      <line x1="665" y1="210" x2="785" y2="210" stroke="#c5d0d7" stroke-width="1.8"/>
+      <line x1="725" y1="177" x2="725" y2="245" stroke="#c5d0d7" stroke-width="1.8"/>
+      <text x="695" y="199" fill="#17324d" font-size="14" font-weight="700">ES 11</text>
+      <text x="755" y="199" fill="#17324d" font-size="14" font-weight="700">EF 18</text>
+      <text x="695" y="233" fill="#ba4a5a" font-size="14" font-weight="700">LS 11</text>
+      <text x="755" y="233" fill="#ba4a5a" font-size="14" font-weight="700">LF 18</text>
+    </g>
+
+    <!-- Atividade H (NÃO CRÍTICA, FT=1) -->
+    <g>
+      <rect x="665" y="325" width="120" height="130" rx="16" fill="#ffffff" stroke="#9aa7b2" stroke-width="3.5"/>
+      <text x="725" y="356" fill="#17324d" font-size="24" font-weight="700">H</text>
+      <text x="725" y="378" fill="#687786" font-size="15" font-weight="700">9 dias · FT=1</text>
+      <line x1="665" y1="387" x2="785" y2="387" stroke="#c5d0d7" stroke-width="1.8"/>
+      <line x1="665" y1="420" x2="785" y2="420" stroke="#c5d0d7" stroke-width="1.8"/>
+      <line x1="725" y1="387" x2="725" y2="455" stroke="#c5d0d7" stroke-width="1.8"/>
+      <text x="695" y="409" fill="#17324d" font-size="14" font-weight="700">ES 8</text>
+      <text x="755" y="409" fill="#17324d" font-size="14" font-weight="700">EF 17</text>
+      <text x="695" y="443" fill="#687786" font-size="14" font-weight="700">LS 9</text>
+      <text x="755" y="443" fill="#687786" font-size="14" font-weight="700">LF 18</text>
+    </g>
+
+    <!-- Atividade I (CRÍTICA) -->
+    <g>
+      <rect x="835" y="220" width="120" height="130" rx="16" fill="#fff8f8" stroke="#ba4a5a" stroke-width="4.5"/>
+      <text x="895" y="251" fill="#17324d" font-size="24" font-weight="700">I</text>
+      <text x="895" y="273" fill="#ba4a5a" font-size="15" font-weight="700">4 dias · FT=0</text>
+      <line x1="835" y1="282" x2="955" y2="282" stroke="#c5d0d7" stroke-width="1.8"/>
+      <line x1="835" y1="315" x2="955" y2="315" stroke="#c5d0d7" stroke-width="1.8"/>
+      <line x1="895" y1="282" x2="895" y2="350" stroke="#c5d0d7" stroke-width="1.8"/>
+      <text x="865" y="304" fill="#17324d" font-size="14" font-weight="700">ES 18</text>
+      <text x="925" y="304" fill="#17324d" font-size="14" font-weight="700">EF 22</text>
+      <text x="865" y="338" fill="#ba4a5a" font-size="14" font-weight="700">LS 18</text>
+      <text x="925" y="338" fill="#ba4a5a" font-size="14" font-weight="700">LF 22</text>
+    </g>
+
+    <!-- Fim -->
+    <circle cx="1030" cy="285" r="45" fill="#17324d"/>
+    <text x="1030" y="280" fill="#ffffff" font-size="22" font-weight="700">Fim</text>
+    <text x="1030" y="303" fill="#8ed2c5" font-size="16" font-weight="700">t = 22</text>
+  </g>
+
+  <!-- Tarja do Caminho Crítico -->
+  <g font-family="Arial, sans-serif" font-size="19" font-weight="700">
+    <rect x="310" y="485" width="480" height="44" rx="22" fill="#ba4a5a"/>
+    <text x="550" y="513" text-anchor="middle" fill="#ffffff">Caminho crítico: A – B – E – G – I = 22 dias</text>
+  </g>
+</svg>

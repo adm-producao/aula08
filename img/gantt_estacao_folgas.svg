@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1150 440" role="img" aria-labelledby="title desc">
+  <title id="title">Cronograma de Gantt com datas mais cedo, mais tarde e folgas da estação de inspeção</title>
+  <desc id="desc">Gráfico de Gantt das atividades A a E mostrando barras de execução mais cedo, extensões tracejadas de folga em A e C e o caminho crítico contínuo B-D-E de 9 dias.</desc>
+
+  <rect width="1150" height="440" rx="22" fill="#f7f5ef"/>
+
+  <!-- Faixa de Legenda Superior (sem sobreposição) -->
+  <g font-family="Arial, sans-serif">
+    <rect x="110" y="22" width="28" height="22" rx="4" fill="#ba4a5a"/>
+    <text x="148" y="40" fill="#17324d" font-size="18" font-weight="700">Atividade crítica (Folga = 0)</text>
+
+    <rect x="445" y="22" width="28" height="22" rx="4" fill="#176b87"/>
+    <text x="483" y="40" fill="#17324d" font-size="18" font-weight="700">Não crítica (execução ES → EF)</text>
+
+    <rect x="800" y="22" width="28" height="22" rx="4" fill="#fdf6e4" stroke="#d39b2a" stroke-width="2.5" stroke-dasharray="5,3"/>
+    <text x="838" y="40" fill="#17324d" font-size="18" font-weight="700">Folga total (EF → LF)</text>
+  </g>
+
+  <!-- Área do gráfico: x de 260 a 1070 (9 dias -> 90 px por dia) -->
+  <rect x="260" y="64" width="810" height="295" fill="#ffffff" stroke="#c5d0d7" stroke-width="2"/>
+
+  <!-- Linhas de grade verticais (dias 0 a 9) -->
+  <g stroke="#e1e7ec" stroke-width="1.5">
+    <line x1="350" y1="64" x2="350" y2="359"/>
+    <line x1="440" y1="64" x2="440" y2="359"/>
+    <line x1="530" y1="64" x2="530" y2="359"/>
+    <line x1="620" y1="64" x2="620" y2="359"/>
+    <line x1="710" y1="64" x2="710" y2="359"/>
+    <line x1="800" y1="64" x2="800" y2="359"/>
+    <line x1="890" y1="64" x2="890" y2="359"/>
+    <line x1="980" y1="64" x2="980" y2="359"/>
+  </g>
+
+  <!-- Linhas divisórias horizontais -->
+  <g stroke="#edf1f4" stroke-width="1.5">
+    <line x1="45" y1="123" x2="1070" y2="123"/>
+    <line x1="45" y1="182" x2="1070" y2="182"/>
+    <line x1="45" y1="241" x2="1070" y2="241"/>
+    <line x1="45" y1="300" x2="1070" y2="300"/>
+  </g>
+
+  <!-- Rótulos das atividades -->
+  <g font-family="Arial, sans-serif" font-size="20" fill="#17324d">
+    <text x="45" y="100" font-weight="700">A · Preparar área</text>
+    <text x="45" y="159" font-weight="700" fill="#ba4a5a">B · Receber equip.</text>
+    <text x="45" y="218" font-weight="700">C · Configurar rede</text>
+    <text x="45" y="277" font-weight="700" fill="#ba4a5a">D · Instalar equip.</text>
+    <text x="45" y="336" font-weight="700" fill="#ba4a5a">E · Validar estação</text>
+  </g>
+
+  <!-- Barras do Gantt -->
+  <g font-family="Arial, sans-serif" font-size="17.5" font-weight="700" text-anchor="middle">
+    <!-- Atividade A: ES=0, EF=2 (260 a 440), LF=4 (folga 440 a 620) -->
+    <rect x="440" y="75" width="180" height="36" rx="6" fill="#fdf6e4" stroke="#d39b2a" stroke-width="2.5" stroke-dasharray="7,4"/>
+    <text x="530" y="99" fill="#9a6b09">Folga = 2d (LF=4)</text>
+    <rect x="260" y="75" width="180" height="36" rx="6" fill="#176b87"/>
+    <text x="350" y="99" fill="#ffffff">2 dias (0→2)</text>
+
+    <!-- Atividade B: ES=0, EF=4 (260 a 620), crítica -->
+    <rect x="260" y="134" width="360" height="36" rx="6" fill="#ba4a5a"/>
+    <text x="440" y="158" fill="#ffffff">4 dias (0→4) · Crítica</text>
+
+    <!-- Atividade C: ES=0, EF=3 (260 a 530), LF=7 (folga 530 a 890) -->
+    <rect x="530" y="193" width="360" height="36" rx="6" fill="#fdf6e4" stroke="#d39b2a" stroke-width="2.5" stroke-dasharray="7,4"/>
+    <text x="710" y="217" fill="#9a6b09">Folga = 4 dias (LF = 7)</text>
+    <rect x="260" y="193" width="270" height="36" rx="6" fill="#176b87"/>
+    <text x="395" y="217" fill="#ffffff">3 dias (0→3)</text>
+
+    <!-- Atividade D: ES=4, EF=7 (620 a 890), crítica -->
+    <rect x="620" y="252" width="270" height="36" rx="6" fill="#ba4a5a"/>
+    <text x="755" y="276" fill="#ffffff">3 dias (4→7) · Crítica</text>
+
+    <!-- Atividade E: ES=7, EF=9 (890 a 1070), crítica -->
+    <rect x="890" y="311" width="180" height="36" rx="6" fill="#ba4a5a"/>
+    <text x="980" y="335" fill="#ffffff">2 dias (7→9)</text>
+  </g>
+
+  <!-- Eixo de tempo (dias) -->
+  <g font-family="Arial, sans-serif" font-size="19" font-weight="700" fill="#17324d" text-anchor="middle">
+    <text x="260" y="388">0</text>
+    <text x="350" y="388">1</text>
+    <text x="440" y="388">2</text>
+    <text x="530" y="388">3</text>
+    <text x="620" y="388">4</text>
+    <text x="710" y="388">5</text>
+    <text x="800" y="388">6</text>
+    <text x="890" y="388">7</text>
+    <text x="980" y="388">8</text>
+    <text x="1070" y="388">9</text>
+    <text x="665" y="422" font-size="19.5" fill="#176b87">Tempo (dias) — Caminho crítico B → D → E ocupa de t = 0 a t = 9 sem folga</text>
+  </g>
+</svg>

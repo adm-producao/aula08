@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 500" role="img" aria-labelledby="title desc">
+  <title id="title">Rede de Precedências do Exemplo 2 (Atividades A a I)</title>
+  <desc id="desc">Rede AON do projeto com 9 atividades: A libera B, C e D; B libera E; C e D liberam F; E e F liberam G; D libera H; G e H liberam I.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="14" markerHeight="14" refX="12" refY="7" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L14,7 L0,14 Z" fill="#176b87"/>
+    </marker>
+    <filter id="shadow" x="-15%" y="-15%" width="130%" height="135%">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#17324d" flood-opacity="0.14"/>
+    </filter>
+  </defs>
+
+  <rect width="1100" height="500" rx="22" fill="#f7f5ef"/>
+
+  <!-- Setas de Precedência -->
+  <g fill="none" stroke="#176b87" stroke-width="3" marker-end="url(#arrow)">
+    <!-- Início -> A -->
+    <path d="M105 240 H152"/>
+
+    <!-- A -> B, C, D -->
+    <path d="M270 240 H300 V110 H322"/>
+    <path d="M270 240 H322"/>
+    <path d="M270 240 H300 V370 H322"/>
+
+    <!-- B -> E -->
+    <path d="M440 110 H492"/>
+
+    <!-- C -> F -->
+    <path d="M440 240 H470 V285 H492"/>
+
+    <!-- D -> F e D -> H -->
+    <path d="M440 370 H470 V325 H492"/>
+    <path d="M440 370 H640 V390 H662"/>
+
+    <!-- E -> G -->
+    <path d="M610 110 H640 V160 H662"/>
+
+    <!-- F -> G -->
+    <path d="M610 305 H640 V200 H662"/>
+
+    <!-- G -> I -->
+    <path d="M780 180 H810 V265 H832"/>
+
+    <!-- H -> I -->
+    <path d="M780 390 H810 V305 H832"/>
+
+    <!-- I -> Fim -->
+    <path d="M950 285 H972"/>
+  </g>
+
+  <!-- Nós das Atividades -->
+  <g filter="url(#shadow)" font-family="Arial, sans-serif" text-anchor="middle">
+    <!-- Início -->
+    <circle cx="60" cy="240" r="45" fill="#17324d"/>
+    <text x="60" y="248" fill="#ffffff" font-size="22" font-weight="700">Início</text>
+
+    <!-- Atividade A -->
+    <rect x="160" y="190" width="110" height="100" rx="16" fill="#ffffff" stroke="#176b87" stroke-width="4"/>
+    <text x="215" y="232" fill="#17324d" font-size="28" font-weight="700">A</text>
+    <text x="215" y="266" fill="#176b87" font-size="19" font-weight="700">1 dia</text>
+
+    <!-- Atividade B -->
+    <rect x="330" y="60" width="110" height="100" rx="16" fill="#ffffff" stroke="#176b87" stroke-width="4"/>
+    <text x="385" y="102" fill="#17324d" font-size="28" font-weight="700">B</text>
+    <text x="385" y="136" fill="#176b87" font-size="19" font-weight="700">4 dias</text>
+
+    <!-- Atividade C -->
+    <rect x="330" y="190" width="110" height="100" rx="16" fill="#ffffff" stroke="#176b87" stroke-width="4"/>
+    <text x="385" y="232" fill="#17324d" font-size="28" font-weight="700">C</text>
+    <text x="385" y="266" fill="#176b87" font-size="19" font-weight="700">3 dias</text>
+
+    <!-- Atividade D -->
+    <rect x="330" y="320" width="110" height="100" rx="16" fill="#ffffff" stroke="#176b87" stroke-width="4"/>
+    <text x="385" y="362" fill="#17324d" font-size="28" font-weight="700">D</text>
+    <text x="385" y="396" fill="#176b87" font-size="19" font-weight="700">7 dias</text>
+
+    <!-- Atividade E -->
+    <rect x="500" y="60" width="110" height="100" rx="16" fill="#ffffff" stroke="#1f8a70" stroke-width="4"/>
+    <text x="555" y="102" fill="#17324d" font-size="28" font-weight="700">E</text>
+    <text x="555" y="136" fill="#1f8a70" font-size="19" font-weight="700">6 dias</text>
+
+    <!-- Atividade F -->
+    <rect x="500" y="255" width="110" height="100" rx="16" fill="#ffffff" stroke="#1f8a70" stroke-width="4"/>
+    <text x="555" y="297" fill="#17324d" font-size="28" font-weight="700">F</text>
+    <text x="555" y="331" fill="#1f8a70" font-size="19" font-weight="700">2 dias</text>
+
+    <!-- Atividade G -->
+    <rect x="670" y="130" width="110" height="100" rx="16" fill="#ffffff" stroke="#1f8a70" stroke-width="4"/>
+    <text x="725" y="172" fill="#17324d" font-size="28" font-weight="700">G</text>
+    <text x="725" y="206" fill="#1f8a70" font-size="19" font-weight="700">7 dias</text>
+
+    <!-- Atividade H -->
+    <rect x="670" y="340" width="110" height="100" rx="16" fill="#ffffff" stroke="#176b87" stroke-width="4"/>
+    <text x="725" y="382" fill="#17324d" font-size="28" font-weight="700">H</text>
+    <text x="725" y="416" fill="#176b87" font-size="19" font-weight="700">9 dias</text>
+
+    <!-- Atividade I -->
+    <rect x="840" y="235" width="110" height="100" rx="16" fill="#ffffff" stroke="#1f8a70" stroke-width="4"/>
+    <text x="895" y="277" fill="#17324d" font-size="28" font-weight="700">I</text>
+    <text x="895" y="311" fill="#1f8a70" font-size="19" font-weight="700">4 dias</text>
+
+    <!-- Fim -->
+    <circle cx="1025" cy="285" r="45" fill="#17324d"/>
+    <text x="1025" y="293" fill="#ffffff" font-size="22" font-weight="700">Fim</text>
+  </g>
+
+  <!-- Legenda inferior -->
+  <g font-family="Arial, sans-serif" font-size="16" fill="#17324d" text-anchor="middle">
+    <text x="550" y="475" font-weight="700" fill="#176b87">Rede AON do Exemplo 2 · 9 atividades (A a I) com convergências em F (C, D), G (E, F) e I (G, H)</text>
+  </g>
+</svg>
