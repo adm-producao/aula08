@@ -1,0 +1,257 @@
+<div id="img-zoom-modal" class="img-modal-overlay" aria-hidden="true">
+  <div class="zoom-toolbar">
+    <button type="button" class="zoom-btn" id="zoom-in" title="Aumentar zoom (+ ou rolar para cima)">➕ Mais Zoom</button>
+    <button type="button" class="zoom-btn" id="zoom-out" title="Diminuir zoom (- ou rolar para baixo)">➖ Menos Zoom</button>
+    <button type="button" class="zoom-btn" id="zoom-reset" title="Ajustar à tela (tecla 0)">↺ Ajustar</button>
+    <button type="button" class="zoom-btn" id="zoom-2x" title="Ampliar 200%">🔍 200%</button>
+    <span class="zoom-level" id="zoom-level">100%</span>
+    <button type="button" class="zoom-btn zoom-close" id="zoom-close" title="Fechar (ESC)">✕ Fechar</button>
+  </div>
+  
+  <div class="img-modal-viewport" id="img-zoom-viewport">
+    <img class="img-modal-content" id="img-zoom-target" src="" alt="Imagem ampliada">
+  </div>
+  
+  <div class="img-modal-footer">
+    <div class="img-modal-caption" id="img-zoom-caption"></div>
+    <div class="img-modal-hint">
+      💡 <strong>Dicas:</strong> Use os botões acima ou <strong>role a rodinha do mouse</strong> para dar zoom · Clique e <strong>arraste</strong> para mover o diagrama · Pressione <strong>ESC</strong> para fechar
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  function initImageZoom() {
+    var modal = document.getElementById('img-zoom-modal');
+    var viewport = document.getElementById('img-zoom-viewport');
+    var modalImg = document.getElementById('img-zoom-target');
+    var modalCap = document.getElementById('img-zoom-caption');
+    var zoomLevel = document.getElementById('zoom-level');
+    var btnIn = document.getElementById('zoom-in');
+    var btnOut = document.getElementById('zoom-out');
+    var btnReset = document.getElementById('zoom-reset');
+    var btn2x = document.getElementById('zoom-2x');
+    var closeBtn = document.getElementById('zoom-close');
+
+    if (!modal || !modalImg) return;
+
+    var scale = 1;
+    var posX = 0;
+    var posY = 0;
+    var isDragging = false;
+    var startX = 0;
+    var startY = 0;
+    var moved = false;
+
+    function updateTransform() {
+      modalImg.style.transform = 'translate(' + posX + 'px, ' + posY + 'px) scale(' + scale + ')';
+      if (zoomLevel) {
+        zoomLevel.textContent = Math.round(scale * 100) + '%';
+      }
+      if (scale > 1.05) {
+        modalImg.style.cursor = isDragging ? 'grabbing' : 'grab';
+      } else {
+        modalImg.style.cursor = 'zoom-in';
+      }
+    }
+
+    function resetZoom() {
+      scale = 1;
+      posX = 0;
+      posY = 0;
+      updateTransform();
+    }
+
+    function zoomTo(newScale) {
+      scale = Math.min(Math.max(newScale, 0.5), 4.5);
+      if (scale <= 1) {
+        posX = 0;
+        posY = 0;
+      }
+      updateTransform();
+    }
+
+    function openZoom(src, alt) {
+      if (!src) return;
+      modalImg.src = src;
+      modalImg.alt = alt || 'Imagem ampliada';
+      if (modalCap) modalCap.textContent = alt || '';
+      resetZoom();
+      modal.classList.add('active');
+      modal.setAttribute('aria-hidden', 'false');
+    }
+
+    function closeZoom() {
+      modal.classList.remove('active');
+      modal.setAttribute('aria-hidden', 'true');
+      modalImg.src = '';
+      resetZoom();
+    }
+
+    if (btnIn) {
+      btnIn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        zoomTo(scale + 0.35);
+      });
+    }
+
+    if (btnOut) {
+      btnOut.addEventListener('click', function(e) {
+        e.stopPropagation();
+        zoomTo(scale - 0.35);
+      });
+    }
+
+    if (btnReset) {
+      btnReset.addEventListener('click', function(e) {
+        e.stopPropagation();
+        resetZoom();
+      });
+    }
+
+    if (btn2x) {
+      btn2x.addEventListener('click', function(e) {
+        e.stopPropagation();
+        zoomTo(scale >= 1.9 && scale <= 2.1 ? 1 : 2);
+      });
+    }
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        closeZoom();
+      });
+    }
+
+    // Zoom com a rodinha do mouse (wheel)
+    if (viewport) {
+      viewport.addEventListener('wheel', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var delta = e.deltaY < 0 ? 0.25 : -0.25;
+        zoomTo(scale + delta);
+      }, { passive: false });
+    }
+
+    // Arrastar a imagem com o mouse (pan)
+    modalImg.addEventListener('mousedown', function(e) {
+      if (e.button !== 0) return;
+      isDragging = true;
+      moved = false;
+      startX = e.clientX - posX;
+      startY = e.clientY - posY;
+      modalImg.style.cursor = 'grabbing';
+      e.preventDefault();
+    });
+
+    window.addEventListener('mousemove', function(e) {
+      if (!isDragging) return;
+      var newX = e.clientX - startX;
+      var newY = e.clientY - startY;
+      if (Math.abs(newX - posX) > 3 || Math.abs(newY - posY) > 3) {
+        moved = true;
+      }
+      posX = newX;
+      posY = newY;
+      updateTransform();
+    });
+
+    window.addEventListener('mouseup', function(e) {
+      if (isDragging) {
+        isDragging = false;
+        updateTransform();
+      }
+    });
+
+    // Clique na imagem ampliada para alternar zoom
+    modalImg.addEventListener('click', function(e) {
+      e.stopPropagation();
+      if (!moved) {
+        if (scale <= 1.05) {
+          zoomTo(1.8);
+        } else if (scale < 2.8) {
+          zoomTo(scale + 0.6);
+        } else {
+          resetZoom();
+        }
+      }
+    });
+
+    // Clique no fundo escuro para fechar
+    modal.addEventListener('click', function(e) {
+      if (e.target === modal || e.target === viewport) {
+        closeZoom();
+      }
+    });
+
+    // Teclado: se o modal estiver ativo, controla o zoom e ESC fecha; caso contrário, NADA É BLOQUEADO!
+    document.addEventListener('keydown', function(e) {
+      if (!modal.classList.contains('active')) return;
+      
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        e.stopPropagation();
+        closeZoom();
+      } else if (e.key === '+' || e.key === '=') {
+        e.preventDefault();
+        e.stopPropagation();
+        zoomTo(scale + 0.35);
+      } else if (e.key === '-' || e.key === '_') {
+        e.preventDefault();
+        e.stopPropagation();
+        zoomTo(scale - 0.35);
+      } else if (e.key === '0') {
+        e.preventDefault();
+        e.stopPropagation();
+        resetZoom();
+      } else if (['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', ' '].indexOf(e.key) !== -1) {
+        // Bloqueia avanço de slides apenas enquanto a imagem estiver ampliada na tela inteira
+        e.stopPropagation();
+      }
+    }, true);
+
+    // DELEGAÇÃO GLOBAL DE CLIQUES EM IMAGENS DOS SLIDES (Funciona localmente e publicado na web!)
+    document.addEventListener('click', function(e) {
+      var target = e.target;
+      if (!target) return;
+      
+      // Verifica se o clique foi em uma tag IMG dentro de um slide do remark
+      if (target.tagName === 'IMG') {
+        var slideContent = target.closest('.remark-slide-content');
+        if (slideContent && !target.classList.contains('no-zoom') && !target.closest('.zoom-toolbar') && target.id !== 'img-zoom-target') {
+          e.preventDefault();
+          e.stopPropagation();
+          openZoom(target.src, target.alt || target.title);
+        }
+      }
+    }, true);
+
+    // Adiciona classe visual e título explicativo a todas as imagens dos slides
+    function markZoomableImages() {
+      var imgs = document.querySelectorAll('.remark-slide-content img:not(.no-zoom)');
+      imgs.forEach(function(img) {
+        if (!img.classList.contains('zoomable-img')) {
+          img.classList.add('zoomable-img');
+          if (!img.title) {
+            img.title = '🔍 Clique para ampliar esta imagem e redimensionar';
+          }
+        }
+      });
+    }
+
+    markZoomableImages();
+    if (window.slideshow) {
+      window.slideshow.on('afterShowSlide', markZoomableImages);
+    }
+    // Reexecuta periodicamente para garantir caso slides carreguem assincronamente
+    setInterval(markZoomableImages, 1000);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initImageZoom);
+  } else {
+    initImageZoom();
+  }
+})();
+</script>
