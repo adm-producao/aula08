@@ -687,6 +687,86 @@ class: compact
 .clear[]
 
 .decision[**Parabéns!** Agora você já sabe como grandes engenheiros e líderes organizam projetos gigantescos e garantem entregas no prazo!]
+---
+
+class: inverse, center, middle
+
+# Bastidores da Pesquisa Operacional
+
+.large[Qual método matemático o CPM usa para encontrar o Caminho Máximo?]
+
+---
+
+class: compact
+
+# 1. A Rede como um Grafo Acíclico (DAG) e Programação Dinâmica
+
+Na **Pesquisa Operacional (P.O.)**, o problema do Caminho Crítico é formalmente o **Problema do Caminho Mais Longo (*Longest Path Problem*)**.
+
+.pull-left[
+### 🔄 Por que o problema é tratável no CPM?
+- Em grafos gerais com ciclos, achar o caminho mais longo é um problema **NP-difícil** (sem solução rápida conhecida);
+- Mas uma rede de projeto é um **DAG (*Directed Acyclic Graph*)**: tarefas nunca formam loops (o tempo só anda para a frente!);
+- Em um DAG, podemos fazer uma **ordenação topológica** dos nós da esquerda para a direita.
+]
+
+.pull-right[
+### ⚡ A Equação de Recursão de Bellman
+O algoritmo do CPM nada mais é do que **Programação Dinâmica**:
+
+`$$\text{ES}_j = \max_{i \in \text{Pred}(j)} \{ \text{ES}_i + d_i \}$$`
+
+- **Princípio da Otimalidade de Bellman:** O caminho máximo até o nó `\(j\)` é a soma do caminho ótimo até `\(i\)` mais a duração `\(d_i\)`;
+- **Complexidade Linear:** `\(\mathcal{O}(V + E)\)` — calcula projetos com milhares de tarefas em frações de segundo!
+]
+
+.clear[]
+
+.decision[**Conclusão da P.O.:** A caminhada da "Ida" é a **Programação Dinâmica de Bellman** resolvida diretamente sobre a ordem topológica da rede!]
+
+---
+
+class: compact
+
+# 2. O Olhar da Programação Linear (Modelo Primal-Dual)
+
+O CPM também pode ser formulado com total rigor como um **Problema de Programação Linear (PL)** contínuo:
+
+.pull-left[
+### 🎯 Modelo Primal (Minimizar o Prazo Final)
+Definindo `\(t_i\)` como o instante de ocorrência do evento `\(i\)`:
+`$$\min \quad (t_{\text{fim}} - t_{\text{início}})$$`
+**Sujeito às restrições de precedência:**
+`$$t_j - t_i \ge d_{ij} \quad \forall (i,j) \in \text{Arcos}$$`
+
+- Cada restrição garante que a tarefa `\(j\)` só começa após o término da predecessora `\(i\)`.
+]
+
+.pull-right[
+### ⚖️ O Dual da Programação Linear
+Pelo **Teorema da Dualidade Forte**:
+- As **variáveis duais** (`\(\lambda_{ij} \ge 0\)`) medem a sensibilidade de cada restrição;
+- Se `\(\lambda_{ij} &gt; 0 \implies\)` o arco `\((i,j)\)` tem **Folga Zero** e está no **Caminho Crítico**!
+- O valor da variável dual é o "preço-sombra": quanto o projeto atrasa se aquela tarefa atrasar 1 dia.
+]
+
+.clear[]
+
+.tip[**Aplicação Prática:** Esse modelo de Programação Linear é o coração dos algoritmos de compressão de prazos e custos (*crashing*) em softwares corporativos de PCP!]
+
+---
+
+class: compact
+
+# Síntese: Os 3 Pilares do CPM na Pesquisa Operacional
+
+| Abordagem Matemática | O que ela faz na prática? | Principal Vantagem no PCP |
+|---|---|---|
+| **1. Programação Dinâmica (Bellman)** | Executa a Ida (`\(\max\)`) e a Volta (`\(\min\)`) seguindo a ordenação topológica do DAG. | Velocidade instantânea `\(\mathcal{O}(V+E)\)`; intuitivo para ensinar e calcular à mão. |
+| **2. Programação Linear (Primal)** | Modela as datas de cada nó com inequações lineares de precedência `\(t_j - t_i \ge d_{ij}\)`. | Permite acoplar restrições de orçamento, recursos escassos e marcos contratuais. |
+| **3. Teoria da Dualidade** | Identifica os gargalos através das variáveis duais positivas (`\(\lambda &gt; 0\)`). | Base matemática exata para análise de sensibilidade e trade-off tempo-custo (*crashing*). |
+
+.decision[**Em resumo:** O CPM encontra o caminho máximo de forma simples e ultraveloz porque a flecha do tempo impede ciclos, permitindo que a Programação Dinâmica e Linear resolvam o problema com elegância!]
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
