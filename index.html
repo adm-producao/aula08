@@ -689,6 +689,119 @@ class: compact
 .decision[**Parabéns!** Agora você já sabe como grandes engenheiros e líderes organizam projetos gigantescos e garantem entregas no prazo!]
 ---
 
+class: compact
+
+# Conectividade das ferramentas · O fluxo de informações
+
+&lt;img src="img/mapa_conectividade_ferramentas_pcp.svg" class="wide-diagram" alt="Mapa de Conectividade das Ferramentas do PCP"&gt;
+
+.decision[Nenhuma ferramenta opera isolada: a saída de uma etapa é premissa obrigatória da seguinte. Se a **previsão** errar, o **PMP** oscila; se o **MRP** falhar, o chão de fábrica para; se a **programação** desviar, o cliente não recebe.]
+
+---
+
+class: compact, dense-table
+
+# Matriz decisória das ferramentas do PCP
+
+| Nível | Ferramentas centrais | Pergunta norteadora | Entradas necessárias | Saída / Decisão gerencial |
+|---|---|---|---|---|
+| **Estratégico** | Previsão de Demanda &amp;amp; Curva ABC | Quanto o mercado consumirá e o que priorizar? | Histórico de vendas, fatores causais e valor financeiro | Previsão agregada e foco nos itens de maior impacto (A) |
+| **Tático** | Planejamento Agregado (PAP) | Qual é o ritmo global e o envelope de capacidade? | Previsão agregada e capacidade nominal de fábrica | Estratégia de acompanhamento, nivelamento, turnos ou horas extras |
+| **Tático** | Plano Mestre (PMP / MPS) &amp;amp; ATP | O que, quanto e quando produzir de itens finais? | Carteira de pedidos, previsão desagregada e *time fences* | Grade firme de montagem final e promessa confiável de entrega (ATP) |
+| **Operacional** | MRP (Explosão de Materiais) &amp;amp; LEC | Quais componentes comprar e fabricar? | Grade do PMP, estrutura do produto (BOM), estoques e lotes | Ordens de compra liberadas a fornecedores e ordens de fabricação |
+| **Execução** | Programação Fina &amp;amp; Sequenciamento | Qual ordem processar agora em cada máquina? | Ordens liberadas, tempos de processamento e datas de entrega | Sequência nos centros de trabalho (SPT, EDD, Johnson) e baixo WIP |
+| **Projetos** | PERT / CPM (Redes, Folgas, Crashing) | Quando uma nova capacidade ou linha estará pronta? | Precedências, durações (determinísticas ou PERT) e custos | Cronograma do caminho crítico, datas marco e liberação para o PMP |
+
+---
+
+class: compact
+
+# O papel de PERT/CPM na dinâmica do PCP
+
+.pull-left[
+### A rotina contínua de operações
+- opera dentro da **capacidade instalada** e dos arranjos existentes;
+- responde à demanda do mercado via **PMP, MRP e sequenciamento**;
+- busca estabilidade de fluxo, alta produtividade e baixo estoque em processo (*WIP*).
+]
+
+.pull-right[
+### Os projetos que transformam a fábrica
+- implantam novas células, linhas de envase e maquinário;
+- executam paradas programadas de manutenção geral (*shutdowns*);
+- introduzem novos produtos e alterações de engenharia.
+]
+
+.clear[]
+
+.warning[**O elo de integração:** o projeto estabelece **quando** e **com que capacidade** a fábrica poderá operar. Se o caminho crítico de uma implantação atrasa 1 semana, o PMP precisa ser revisto imediatamente para não prometer produtos sem capacidade disponível.]
+
+---
+
+class: compact
+
+# O ciclo fechado de controle e feedback
+
+.pull-left[
+### Quando ocorrem desvios operacionais...
+- **quebra de máquina ou retrabalho no posto:** o chão de fábrica aciona regras de sequenciamento e remaneja lotes;
+- **fornecedor atrasa componente crítico:** o MRP recalcula necessidades líquidas e consome estoque de segurança;
+- **pedido urgente entra na carteira:** o PMP avalia o Disponível para Promessa (ATP) sem violar a cerca congelada;
+- **instalação atrasa em atividade com folga:** o projeto absorve o desvio sem deslocar o marco final.
+]
+
+.pull-right[
+### A essência do PCP
+- **planejar** é estabelecer a meta viável e alocar os recursos no tempo;
+- **controlar** é comparar o realizado com o previsto e agir antes do colapso;
+- o profissional de PCP atua como o **árbitro de equilíbrio** entre a pressão comercial por prazos, a restrição financeira por estoques e a capacidade técnica da fábrica.
+]
+
+.clear[]
+
+.decision[O verdadeiro valor do PCP não está em gerar planilhas estáticas, mas em **garantir coordenação ágil entre vendas, compras, engenharia e produção** diante das incertezas do mundo real.]
+
+---
+
+class: compact
+
+# As cinco coerências de um sistema de produção
+
+.pull-left[
+1. **Coerência de Demanda:**  
+   diferenciar demanda independente (mercado/PMP) de demanda dependente (BOM/MRP);
+2. **Coerência de Materiais:**  
+   nenhuma montagem final inicia se faltar um único parafuso no almoxarifado;
+3. **Coerência de Capacidade:**  
+   nunca liberar ordens para o chão de fábrica além do que os gargalos conseguem processar;
+]
+
+.pull-right[
+4. **Coerência de Tempo:**  
+   respeitar lead times de compra, fabricação, montagem e folgas de projetos;
+5. **Coerência de Execução:**  
+   fornecer prioridades transparentes (regras de despacho) para que o chão de fábrica cumpra o índice OTIF (*On-Time In-Full*).
+]
+
+.clear[]
+
+.decision[**Síntese final:** Planejar e controlar a produção é a ciência e a arte de **manter essas cinco coerências vivas e sincronizadas todos os dias** na indústria.]
+
+---
+
+class: compact
+
+# Fontes da unidade e referências do curso
+
+- Plano didático e ementa da disciplina (*Planejamento e Controle da Produção*).
+- Corrêa, H. L.; Corrêa, C. A. *Administração de Produção e Operações*. São Paulo: Atlas.
+- Slack, N.; Brandon-Jones, A.; Johnston, R. *Administração da Produção*. São Paulo: Atlas.
+- Tubino, D. F. *Planejamento e Controle da Produção: Teoria e Prática*. São Paulo: Atlas.
+
+.small[Os exemplos numéricos e diagramas vetoriais desta apresentação foram estruturados para resolução ativa em sala.]
+
+---
+
 class: inverse, center, middle
 
 # Bastidores da Pesquisa Operacional
