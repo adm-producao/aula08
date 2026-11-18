@@ -1,0 +1,166 @@
+---
+title: "Atividade Avaliativa Prática: PERT/CPM e Gestão de Prazos"
+subtitle: "Planejamento e Controle da Produção · Engenharia de Produção"
+author: "Profª. Renata Oliveira"
+date: "Semestre Letivo 2026"
+output:
+  word_document:
+    toc: false
+    number_sections: false
+---
+
+# 🏎️ Missão EcoSprint: O Carro Solar da Feira de Ciências
+
+**Curso:** Administração / Engenharia de Produção  
+**Modalidade:** Em duplas ou trios (ou individual)  
+**Tempo estimado:** 60 a 80 minutos  
+**Valor total:** 10,0 pontos  
+
+---
+
+### Identificação da Equipe
+
+- **Estudante 1:** __________________________________________________ **Matrícula:** _______________
+- **Estudante 2:** __________________________________________________ **Matrícula:** _______________
+- **Estudante 3:** __________________________________________________ **Matrícula:** _______________
+- **Turma:** ___________________________ **Data:** _____/_____/2026 **Nota:** _________ / 10,0
+
+---
+
+## 1. Contexto da Missão
+
+A equipe de vocês foi selecionada para representar a instituição na grande **Competição Regional de Veículos Sustentáveis**. Vocês devem planejar, coordenar e montar o protótipo do **EcoSprint**, um carrinho elétrico movido a energia solar.
+
+O coordenador da feira avisou: **o evento já tem data de abertura fixada e não haverá prorrogação para a entrega dos veículos**.
+
+O trabalho de montagem foi dividido em 8 tarefas:
+
+| Tarefa | O que deve ser feito? | Predecessoras (Quem vem antes?) | Estimativas de Duração |
+|:---:|---|:---:|---|
+| **A** | Planejamento geral e desenho conceitual | *Nenhuma (início de tudo)* | Duração certa: **2 dias** |
+| **B** | Projetar a estrutura mecânica (chassi e rodas) | Depende de **A** | Duração certa: **4 dias** |
+| **C** | Escolher e comprar células solares e baterias | Depende de **A** | **Incerteza (PERT)**: $o=1\text{d}$, $m=3\text{d}$, $p=5\text{d}$ |
+| **D** | Cortar e montar o chassi de alumínio | Depende de **B** | Duração certa: **5 dias** |
+| **E** | Montar o circuito elétrico e suportes | Depende de **C** | Duração certa: **4 dias** |
+| **F** | Instalar os eixos e acoplar as rodas no chassi | Depende de **D** | Duração certa: **3 dias** |
+| **G** | Ligar o motor elétrico com circuito e sensores | Depende de **D** e **E** | Duração certa: **3 dias** |
+| **H** | Testes de pista, calibração e entrega final | Depende de **F** e **G** | Duração certa: **2 dias** |
+
+---
+
+## 2. Convenções e Siglas Oficiais (Lembrete de Aula)
+
+- **Caminhada para a Frente (Ida):**
+  - **ES (IMC / DCI):** Início Mais Cedo (Data Mais Cedo de Início) $\to$ o projeto começa em $t = 0$. Em junções onde duas ou mais setas chegam à mesma caixa, adote o **MAIOR** tempo de término anterior!
+  - **EF (TMC / DCT):** Término Mais Cedo $\to \text{EF} = \text{ES} + \text{Duração}$.
+- **Caminhada para Trás (Volta):**
+  - **LF (TMT / DTT):** Término Mais Tarde $\to$ no nó final, fixamos $\text{LF} = \text{Prazo Total do Projeto}$. Em bifurcações na volta (onde saem setas para mais de uma tarefa), adote o **MENOR** prazo limite!
+  - **LS (IMT / DTI):** Início Mais Tarde $\to \text{LS} = \text{LF} - \text{Duração}$.
+- **Folga Total (FT):** $\text{FT} = \text{LS} - \text{ES} = \text{LF} - \text{EF} \quad (\text{ou } \text{IMT} - \text{IMC} = \text{TMT} - \text{TMC})$.
+- **Caminho Crítico:** Sequência contínua de tarefas com **Folga Zero ($\text{FT} = 0$)**.
+
+---
+
+## 3. Questões para Resolução
+
+### Questão 1 · O Tempo Esperado no Método PERT (1,5 pontos)
+
+Na **Tarefa C**, a equipe está insegura com o prazo de entrega das células solares pelo fornecedor. Por isso, foram levantados 3 palpites:
+- **Otimista ($o$):** 1 dia (entrega expressa);
+- **Mais Provável ($m$):** 3 dias (prazo normal);
+- **Pessimista ($p$):** 5 dias (atraso logístico por chuva).
+
+**1.1** Utilizando a fórmula da média ponderada do PERT:
+$$t_e = \frac{o + 4m + p}{6}$$
+Calcule a **duração esperada ($t_e$)** da Tarefa C, mostrando a substituição numérica passo a passo:
+
+*(Espaço para cálculo)*
+
+\
+\
+\
+**Duração esperada ($t_e$) da Tarefa C:** _________ dias.  
+*(Adote este valor inteiro para todos os cálculos seguintes).*
+
+---
+
+### Questão 2 · O Mapa da Rede AON e Caminhos Possíveis (2,0 pontos)
+
+**2.1** No espaço abaixo, desenhe o diagrama da **Rede AON** do projeto (caixinhas para as tarefas e setas indicando as dependências):
+
+*(Espaço para desenho da rede)*
+
+\
+\
+\
+\
+\
+\
+\
+\
+
+**2.2** Escreva todos os caminhos que levam do **Início (A)** até o **Fim (H)** e calcule a soma das durações de cada um:
+
+- **Caminho 1:** A $\to$ _______ $\to$ _______ $\to$ _______ $\to$ H = _______ dias.
+- **Caminho 2:** A $\to$ _______ $\to$ _______ $\to$ _______ $\to$ H = _______ dias.
+- **Caminho 3:** A $\to$ _______ $\to$ _______ $\to$ _______ $\to$ H = _______ dias.
+
+**Qual desses caminhos é o mais longo e o que isso significa para o prazo final do projeto?**  
+__________________________________________________________________________________________________  
+__________________________________________________________________________________________________  
+
+---
+
+### Questão 3 · Tabela de Cronograma, Folgas e Caminho Crítico (3,0 pontos)
+
+Preencha a tabela de cronograma completa com os valores da Ida, da Volta e das Folgas:
+
+| Tarefa | Duração ($d$) | Início Cedo (ES / IMC) | Término Cedo (EF / TMC) | Início Tarde (LS / IMT) | Término Tarde (LF / TMT) | Folga Total (FT) | É Crítica? (Sim / Não) |
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| **A** | 2 dias | | | | | | |
+| **B** | 4 dias | | | | | | |
+| **C** | *(calc. PERT)* | | | | | | |
+| **D** | 5 dias | | | | | | |
+| **E** | 4 dias | | | | | | |
+| **F** | 3 dias | | | | | | |
+| **G** | 3 dias | | | | | | |
+| **H** | 2 dias | | | | | | |
+
+**3.1 Qual é a Duração Total Mínima do projeto?** ____________ dias.  
+**3.2 Qual é o Caminho Crítico (sequência de tarefas com Folga Zero)?**  
+__________________________________________________________________________________________________
+
+---
+
+### Questão 4 · Tomada de Decisão sob Pressão (2,5 pontos)
+
+#### Cenário 1 · Atraso do Fornecedor (1,25 pontos)
+O fornecedor das células solares ligou informando que a **Tarefa C vai atrasar 2 dias** além do previsto (passando de 3 para 5 dias).
+- Esse imprevisto fará a equipe perder o prazo de apresentação final do carro? **( ) Sim  ( ) Não**
+- **Justifique tecnicamente** utilizando o conceito e o valor de **Folga** que você calculou na tabela da Questão 3:  
+__________________________________________________________________________________________________  
+__________________________________________________________________________________________________  
+__________________________________________________________________________________________________  
+
+#### Cenário 2 · Onde Investir Recursos Extras? (*Crashing*) (1,25 pontos)
+A direção da escola conseguiu uma verba extra e sugeriu contratar uma oficina especializada para adiantar a **Tarefa E de 4 dias para 2 dias** (reduzindo 2 dias da sua duração).
+- O líder da equipe deve aceitar gastar esse recurso na Tarefa E para tentar antecipar a entrega do carro? **( ) Sim  ( ) Não**
+- **Por quê?** Explique o motivo:  
+__________________________________________________________________________________________________  
+__________________________________________________________________________________________________  
+- Se a equipe precisasse de verdade entregar o projeto **2 dias antes**, em quais tarefas ela deveria negociar redução de prazo?  
+__________________________________________________________________________________________________  
+
+---
+
+### Questão 5 · Conexão com o Mundo Real e o PCP (1,0 ponto)
+
+Em 4 a 6 linhas, responda com suas palavras:
+*"Por que uma montadora de veículos ou uma fábrica de celulares não gerencia seus projetos apenas com uma lista de tarefas comum no bloco de notas? Qual é o perigo de uma empresa não saber quais são suas tarefas críticas e quais têm folga?"*
+
+\
+__________________________________________________________________________________________________  
+__________________________________________________________________________________________________  
+__________________________________________________________________________________________________  
+__________________________________________________________________________________________________  
+__________________________________________________________________________________________________  
