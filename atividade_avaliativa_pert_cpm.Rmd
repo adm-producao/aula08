@@ -1,144 +1,302 @@
 ---
-title: "🏆 Atividade Avaliativa Prática: PERT/CPM e Gestão de Prazos"
-subtitle: "Planejamento e Controle da Produção · Unidade 08"
-author: "Profª. Renata Oliveira · Engenharia de Produção"
-date: "`r format(Sys.time(), '%d de %B de %Y')`"
+title: "Atividade Avaliativa: Planejamento e Controle de Projetos (PERT/CPM)"
+subtitle: "Administração da Produção · Engenharia de Materiais (`adm_prod_mat`)"
+author: "Profª. Renata Oliveira"
+date: "Semestre Letivo 2026"
 output:
   html_document:
-    theme: flatly
-    highlight: tango
+    theme: cosmo
+    highlight: pygments
     toc: true
     toc_float:
       collapsed: false
       smooth_scroll: true
     toc_depth: 3
     number_sections: false
+    css: null
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
 ```
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Fira+Code:wght@400;500&display=swap');
+
 :root {
-  --primary: #142c46;
-  --secondary: #176b87;
-  --accent: #1f8a70;
-  --warning: #d39b2a;
-  --danger: #ba4a5a;
-  --bg-soft: #f8fafc;
+  --ufc-primary: #142c46;
+  --ufc-secondary: #176b87;
+  --ufc-teal: #1f8a70;
+  --ufc-gold: #d39b2a;
+  --ufc-rose: #ba4a5a;
+  --ufc-bg: #f8fafc;
+  --ufc-card: #ffffff;
 }
 
 body {
   font-family: 'Source Sans 3', 'Segoe UI', Arial, sans-serif;
   color: #1e293b;
-  font-size: 16px;
-  line-height: 1.6;
+  background-color: var(--ufc-bg);
+  font-size: 16.5px;
+  line-height: 1.65;
 }
 
-h1, h2, h3, h4 {
-  font-family: 'Montserrat', Arial, sans-serif;
-  color: var(--primary);
-  font-weight: 700;
-}
-
-.header-box {
-  background: linear-gradient(135deg, #142c46 0%, #176b87 100%);
-  color: white;
-  padding: 24px;
-  border-radius: 12px;
-  margin-bottom: 25px;
-  box-shadow: 0 4px 14px rgba(20, 44, 70, 0.15);
-}
-
-.header-box h1, .header-box h2, .header-box p {
-  color: white !important;
-  margin: 4px 0;
-}
-
-.student-card {
-  background: white;
-  border: 2px dashed #cbd5e1;
-  border-radius: 10px;
-  padding: 16px 20px;
+/* Breadcrumb institucional */
+.site-breadcrumb {
+  background: transparent;
+  padding: 8px 0 16px 0;
+  font-size: 0.92rem;
+  color: #64748b;
+  border-bottom: 1px solid #e2e8f0;
   margin-bottom: 24px;
 }
 
-.callout-info {
+.site-breadcrumb a {
+  color: var(--ufc-secondary);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.site-breadcrumb a:hover {
+  text-decoration: underline;
+  color: var(--ufc-primary);
+}
+
+/* Banner de topo do places.education */
+.hero-banner {
+  background: linear-gradient(135deg, #142c46 0%, #176b87 60%, #1f8a70 100%);
+  color: #ffffff;
+  padding: 32px 36px;
+  border-radius: 14px;
+  margin-bottom: 30px;
+  box-shadow: 0 8px 24px rgba(20, 44, 70, 0.16);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-banner h1 {
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #ffffff !important;
+  margin-top: 0;
+  margin-bottom: 8px;
+}
+
+.hero-banner .hero-sub {
+  font-size: 1.15rem;
+  color: #e2f1f5;
+  font-weight: 400;
+  margin-bottom: 18px;
+}
+
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-size: 0.95rem;
+  color: #f1f5f9;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  padding-top: 14px;
+}
+
+.hero-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Títulos */
+h1, h2, h3, h4 {
+  font-family: 'Montserrat', Arial, sans-serif;
+  color: var(--ufc-primary);
+  font-weight: 700;
+}
+
+h2 {
+  border-bottom: 2px solid #e2e8f0;
+  padding-bottom: 8px;
+  margin-top: 36px;
+}
+
+/* Cartões de Questões */
+.question-card {
+  background: var(--ufc-card);
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 24px 28px;
+  margin: 24px 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.question-card:hover {
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+.question-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+  border-bottom: 1px solid #f1f5f9;
+  padding-bottom: 10px;
+}
+
+.question-title {
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--ufc-primary);
+  margin: 0;
+}
+
+.points-badge {
   background-color: #e0f2fe;
-  border-left: 5px solid #0284c7;
-  padding: 14px 18px;
-  border-radius: 0 8px 8px 0;
-  margin: 16px 0;
+  color: #0369a1;
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-weight: 700;
+  font-size: 0.88rem;
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 1px solid #bae6fd;
+}
+
+/* Callouts temáticos */
+.callout {
+  padding: 16px 20px;
+  border-radius: 8px;
+  margin: 18px 0;
+  font-size: 0.98rem;
+}
+
+.callout-info {
+  background-color: #f0fdf4;
+  border-left: 5px solid var(--ufc-teal);
+  color: #14532d;
+}
+
+.callout-warning {
+  background-color: #fffbeb;
+  border-left: 5px solid var(--ufc-gold);
+  color: #78350f;
+}
+
+.callout-danger {
+  background-color: #fef2f2;
+  border-left: 5px solid var(--ufc-rose);
+  color: #7f1d1d;
 }
 
 .callout-decision {
   background-color: #e6f4ea;
   border-left: 5px solid #1f8a70;
-  padding: 14px 18px;
-  border-radius: 0 8px 8px 0;
-  margin: 16px 0;
+  color: #142c46;
 }
 
-.callout-warn {
-  background-color: #fff7ed;
-  border-left: 5px solid #ea580c;
-  padding: 14px 18px;
-  border-radius: 0 8px 8px 0;
-  margin: 16px 0;
-}
-
-.answer-space {
-  border: 1px solid #cbd5e1;
-  background-color: #f8fafc;
-  border-radius: 8px;
-  padding: 18px;
-  min-height: 90px;
-  margin: 12px 0 20px 0;
-}
-
+/* Tabelas */
 table {
   width: 100%;
   border-collapse: collapse;
-  margin: 16px 0;
+  margin: 18px 0;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.03);
 }
 
 th {
-  background-color: var(--primary);
-  color: white !important;
-  text-align: center;
-  padding: 10px 12px;
+  background-color: var(--ufc-primary);
+  color: #ffffff !important;
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 12px 14px;
+  text-align: left;
 }
 
 td {
-  padding: 8px 12px;
-  border-bottom: 1px solid #e2e8f0;
+  padding: 10px 14px;
+  border-bottom: 1px solid #edf2f7;
+  font-size: 0.95rem;
 }
 
-.badge-crit {
-  background-color: #fee2e2;
-  color: #991b1b;
-  font-weight: bold;
-  padding: 2px 8px;
-  border-radius: 6px;
+tr:hover {
+  background-color: #f8fafc;
 }
 
-.badge-free {
-  background-color: #fef3c7;
-  color: #92400e;
-  font-weight: bold;
-  padding: 2px 8px;
+/* Área de entrega e formulário */
+.delivery-box {
+  background: #ffffff;
+  border: 2px dashed #cbd5e1;
+  border-radius: 12px;
+  padding: 22px 26px;
+  margin: 28px 0;
+}
+
+/* Botão de impressão */
+.btn-print {
+  background: var(--ufc-secondary);
+  color: white;
+  border: none;
+  padding: 8px 18px;
   border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  float: right;
+  margin-top: -10px;
+}
+
+.btn-print:hover {
+  background: var(--ufc-primary);
+  color: white;
+}
+
+/* Details & Summary */
+details {
+  background: #f1f5f9;
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin: 14px 0;
+  border: 1px solid #e2e8f0;
+}
+
+summary {
+  font-weight: 700;
+  color: var(--ufc-primary);
+  cursor: pointer;
+  user-select: none;
+}
+
+summary:hover {
+  color: var(--ufc-teal);
 }
 </style>
 
-<div class="header-box">
-  <h2>🏁 Missão EcoSprint · Planejamento e Controle de Projetos</h2>
-  <p><strong>Curso:</strong> Administração / Engenharia de Produção · <strong>Nível:</strong> Ensino Médio Técnico e Graduação Inicial</p>
-  <p><strong>Valor:</strong> 10,0 Pontos · <strong>Modalidade:</strong> Duplas ou Trios · <strong>Tempo:</strong> 60 a 80 min</p>
+<div class="site-breadcrumb">
+  📍 <a href="https://www.places.education/">places.education</a> &nbsp;›&nbsp;
+  <a href="https://www.places.education/disciplinas/">Disciplinas</a> &nbsp;›&nbsp;
+  <a href="https://www.places.education/disciplinas/adm_prod_mat/">Administração da Produção (`adm_prod_mat`)</a> &nbsp;›&nbsp;
+  <strong>Unidade 08 · Atividade Avaliativa PERT/CPM</strong>
 </div>
 
-<div class="student-card">
+<div class="hero-banner">
+  <button class="btn-print" onclick="window.print()">🖨️ Imprimir / Salvar PDF</button>
+  <h1>Atividade Avaliativa Prática: PERT/CPM</h1>
+  <div class="hero-sub">Planejamento, Redes de Precedência, Caminho Crítico e Dinâmica do PCP</div>
+  <div class="hero-meta">
+    <span>📚 <strong>Disciplina:</strong> Administração da Produção (Engenharia de Materiais)</span>
+    <span>👩‍🏫 <strong>Docente:</strong> Profª. Renata Oliveira</span>
+    <span>👥 <strong>Formato:</strong> Em duplas ou trios</span>
+    <span>⏱️ <strong>Duração recomendada:</strong> 75 minutos</span>
+    <span>🎯 <strong>Pontuação:</strong> 10,0 pontos</span>
+  </div>
+</div>
+
+<div class="delivery-box">
+  <h4 style="margin-top: 0; color: var(--ufc-primary);">📝 Identificação da Equipe & Submissão</h4>
+  <p style="margin-bottom: 8px; color: #475569;">Preencha os dados dos integrantes antes de submeter a resolução pela plataforma da disciplina:</p>
   <div class="row">
     <div class="col-md-6">
       <p><strong>Estudante 1:</strong> __________________________________________________ <strong>Matrícula:</strong> _______________</p>
@@ -146,199 +304,203 @@ td {
     </div>
     <div class="col-md-6">
       <p><strong>Estudante 3:</strong> __________________________________________________ <strong>Matrícula:</strong> _______________</p>
-      <p><strong>Turma / Data:</strong> _____________________________________ <strong>Nota:</strong> ________ / 10,0</p>
+      <p><strong>Turma / Turno:</strong> ___________________________________________ <strong>Data de Entrega:</strong> _____/_____/2026</p>
     </div>
   </div>
 </div>
 
----
+## 1. Contexto e Apresentação do Desafio
 
-# 1. Contexto e Apresentação do Desafio
+A equipe de vocês foi escalada para coordenar a construção e validação do protótipo do **EcoSprint**, um veículo elétrico sustentável movido a energia fotovoltaica, que representará a instituição na grande **Competição Universitária de Mobilidade Sustentável**.
 
-A equipe de vocês foi encarregada de projetar e construir o protótipo do **EcoSprint**, um veículo elétrico movido a energia solar que disputará a **Feira Tecnológica Regional de Sustentabilidade**.
+O cronograma do campeonato é rígido: **não há tolerância para atrasos** na inspeção técnica que libera os carros para o grid de largada.
 
-O coordenador da feira reforçou: **não há tolerância para atrasos** na entrega final do protótipo no grid de largada.
+A fabricação e integração do protótipo envolve **8 atividades essenciais**:
 
-O trabalho foi dividido em **8 atividades principais**:
-
-| Tarefa | O que deve ser feito? | Depende de quem? (Predecessoras) | Estimativas de Tempo |
+| Atividade | Descrição Técnica | Predecessora(s) | Parâmetros de Tempo |
 |:---:|---|:---:|---|
-| **A** | Planejamento geral e desenho conceitual | *Nenhuma (marco inicial)* | Duração certa: **2 dias** |
-| **B** | Projetar a estrutura mecânica (chassi e rodas) | Depende de **A** | Duração certa: **4 dias** |
-| **C** | Escolher e comprar células solares e baterias | Depende de **A** | **Incerteza (PERT)**: $o=1\text{d}$, $m=3\text{d}$, $p=5\text{d}$ |
-| **D** | Cortar e montar o chassi de alumínio | Depende de **B** | Duração certa: **5 dias** |
-| **E** | Montar o circuito elétrico e suportes | Depende de **C** | Duração certa: **4 dias** |
-| **F** | Instalar os eixos e acoplar as rodas no chassi | Depende de **D** | Duração certa: **3 dias** |
-| **G** | Ligar o motor elétrico com circuito e sensores | Depende de **D** e **E** | Duração certa: **3 dias** |
-| **H** | Testes de pista, calibração e entrega final | Depende de **F** e **G** | Duração certa: **2 dias** |
+| **A** | Planejamento conceitual e seleção de materiais | *Nenhuma (marco zero)* | Duração determinística: **2 dias** |
+| **B** | Projeto mecânico (chassi tubular e eixos) | Depende de **A** | Duração determinística: **4 dias** |
+| **C** | Aquisição de células fotovoltaicas e baterias | Depende de **A** | **Incerteza (PERT)**: $o = 1\text{d}$, $m = 3\text{d}$, $p = 5\text{d}$ |
+| **D** | Corte, conformação e soldagem do chassi | Depende de **B** | Duração determinística: **5 dias** |
+| **E** | Montagem do módulo elétrico e isolamento | Depende de **C** | Duração determinística: **4 dias** |
+| **F** | Acoplamento de rodas, freios e suspensão | Depende de **D** | Duração determinística: **3 dias** |
+| **G** | Integração motor-bateria e sensores IoT | Depende de **D** e **E** | Duração determinística: **3 dias** |
+| **H** | Calibração em pista e vistoria técnica final | Depende de **F** e **G** | Duração determinística: **2 dias** |
 
 ---
 
-# 2. Convenções e Siglas Oficiais
+## 2. Guia Rápido de Convenções e Fórmulas
 
-<div class="callout-info">
-<strong>Lembrete de Aula (Equivalência Bilíngue das Siglas):</strong>
+<div class="callout callout-info">
+<strong>📐 Convenções Oficiais de Cálculo (Equivalência Bilíngue):</strong>
 <ul>
-  <li><strong>Caminhada para a Frente (IDA):</strong>
+  <li><strong>Caminhada para a Frente (Passagem da IDA):</strong>
     <ul>
-      <li>$\mathbf{ES = IMC / DCI}$: Início Mais Cedo (Data Mais Cedo de Início) $\to$ Início em $t = 0$. Em junções de setas, vence o <strong>MAIOR</strong> tempo anterior!</li>
-      <li>$\mathbf{EF = TMC / DCT}$: Término Mais Cedo $\to \text{EF} = \text{ES} + \text{Duração}$.</li>
+      <li>$\mathbf{ES = IMC / DCI}$: Início Mais Cedo (Data Mais Cedo de Início). O projeto inicia em $t = 0$. Em convergências (nós que recebem duas ou mais setas), adote sempre o <strong>MAIOR</strong> término mais cedo das predecessoras:
+      $$\text{ES}_j = \max_{i \in \text{Pred}(j)} \{ \text{EF}_i \}$$</li>
+      <li>$\mathbf{EF = TMC / DCT}$: Término Mais Cedo:
+      $$\text{EF} = \text{ES} + \text{Duração}$$</li>
     </ul>
   </li>
-  <li><strong>Caminhada para Trás (VOLTA):</strong>
+  <li><strong>Caminhada para Trás (Passagem da VOLTA):</strong>
     <ul>
-      <li>$\mathbf{LF = TMT / DTT}$: Término Mais Tarde $\to$ no nó final, $\text{LF} = \text{Prazo Total}$. Em bifurcações na volta, respeita-se o <strong>MENOR</strong> tempo limite!</li>
-      <li>$\mathbf{LS = IMT / DTI}$: Início Mais Tarde $\to \text{LS} = \text{LF} - \text{Duração}$.</li>
+      <li>$\mathbf{LF = TMT / DTT}$: Término Mais Tarde. No nó final, fixamos $\text{LF} = \text{Duração Total do Projeto}$. Em divergências na volta, adote o <strong>MENOR</strong> início mais tarde das sucessoras:
+      $$\text{LF}_i = \min_{j \in \text{Suc}(i)} \{ \text{LS}_j \}$$</li>
+      <li>$\mathbf{LS = IMT / DTI}$: Início Mais Tarde:
+      $$\text{LS} = \text{LF} - \text{Duração}$$</li>
     </ul>
   </li>
-  <li><strong>Folga Total (FT):</strong> $\text{FT} = \text{LS} - \text{ES} = \text{LF} - \text{EF} \quad (\text{ou } \text{IMT} - \text{IMC} = \text{TMT} - \text{TMC})$.</li>
-  <li><strong>Caminho Crítico:</strong> Sequência de tarefas com <strong>Folga Zero ($\text{FT} = 0$)</strong>.</li>
+  <li><strong>Folga Total (FT):</strong> Tempo que uma tarefa pode postergar sem afetar a entrega final:
+  $$\text{FT} = \text{LS} - \text{ES} = \text{LF} - \text{EF} \quad (\text{ou } \text{IMT} - \text{IMC} = \text{TMT} - \text{TMC})$$</li>
+  <li><strong>Caminho Crítico:</strong> O caminho mais longo do início ao fim da rede. É formado pelas atividades com <strong>Folga Total Zero ($\text{FT} = 0$)</strong>.</li>
 </ul>
 </div>
 
 ---
 
-# 3. Questões Avaliativas
+## 3. Caderno de Questões
 
-### 🔹 Questão 1 · O Cálculo do Tempo Esperado no PERT (1,5 pontos)
+<div class="question-card">
+  <div class="question-header">
+    <div class="question-title">Questão 1 · Estimativa de Duração sob Incerteza (Método PERT)</div>
+    <span class="points-badge">1,5 Pontos</span>
+  </div>
+  <p>Na <strong>Atividade C</strong> (aquisição de componentes elétricos), o time de compras consultou fornecedores e mapeou 3 cenários de entrega:</p>
+  <ul>
+    <li><strong>Cenário Otimista ($o$):</strong> 1 dia (entrega expressa via transporte aéreo);</li>
+    <li><strong>Cenário Mais Provável ($m$):</strong> 3 dias (fluxo logístico rodoviário padrão);</li>
+    <li><strong>Cenário Pessimista ($p$):</strong> 5 dias (atrasos operacionais e retenção de carga).</li>
+  </ul>
+  <p><strong>1.1</strong> Aplicando a equação de média ponderada do PERT:</p>
+  $$t_e = \frac{o + 4m + p}{6}$$
+  <p>Calcule o <strong>tempo esperado ($t_e$)</strong> da Atividade C, demonstrando o cálculo numérico completo:</p>
+  <div style="border: 1px dashed #cbd5e1; border-radius: 8px; padding: 14px; background: #fdfdfd; min-height: 80px;">
+    <em>Espaço para cálculo:</em>
+    <br><br><br>
+    <strong>Duração esperada ($t_e$) adotada para a Atividade C:</strong> ________ dias.
+  </div>
+</div>
 
-Na **Tarefa C**, a equipe teme atrasos de transporte e levantou 3 palpites com os fornecedores:
-- **Otimista ($o$):** 1 dia (entrega expressa);
-- **Mais Provável ($m$):** 3 dias (prazo padrão);
-- **Pessimista ($p$):** 5 dias (atraso logístico).
+<div class="question-card">
+  <div class="question-header">
+    <div class="question-title">Questão 2 · Topologia da Rede AON e Caminhos Concorrentes</div>
+    <span class="points-badge">2,0 Pontos</span>
+  </div>
+  <p><strong>2.1</strong> No espaço abaixo, esboce a <strong>Rede AON (Atividade no Nó)</strong> do projeto, interligando as 8 caixinhas com as setas de dependência técnica.</p>
+  <div style="border: 1px dashed #cbd5e1; border-radius: 8px; padding: 14px; background: #fdfdfd; min-height: 220px; text-align: center; color: #94a3b8;">
+    <br><br><br>
+    <em>[Espaço para o diagrama da rede AON: A aponta para B e C; B aponta para D; C aponta para E; D aponta para F e G; E aponta para G; F e G apontam para H]</em>
+  </div>
+  <p style="margin-top: 16px;"><strong>2.2</strong> Rastreie todos os caminhos que conectam o Início (A) ao Término (H) e compute suas durações somadas:</p>
+  <ul>
+    <li><strong>Caminho 1 (via montagem de rodas F):</strong> A $\to$ _____ $\to$ _____ $\to$ _____ $\to$ H = <strong>_____ dias</strong>.</li>
+    <li><strong>Caminho 2 (via integração mecânica G):</strong> A $\to$ _____ $\to$ _____ $\to$ _____ $\to$ H = <strong>_____ dias</strong>.</li>
+    <li><strong>Caminho 3 (via cadeia elétrica E e G):</strong> A $\to$ _____ $\to$ _____ $\to$ _____ $\to$ H = <strong>_____ dias</strong>.</li>
+  </ul>
+  <p><strong>Conclusão preliminar:</strong> Qual é o caminho de maior duração e o que essa constatação estabelece para a data de entrega do veículo?</p>
+  <div style="border: 1px dashed #cbd5e1; border-radius: 8px; padding: 12px; background: #fdfdfd; min-height: 60px;"></div>
+</div>
 
-**1.1** Usando a fórmula da média ponderada do PERT:
-$$t_e = \frac{o + 4m + p}{6}$$
-Calcule a **duração esperada ($t_e$)** da Tarefa C e mostre o cálculo passo a passo:
+<div class="question-card">
+  <div class="question-header">
+    <div class="question-title">Questão 3 · Tabela Geral de Cronograma, Folgas e Caminho Crítico</div>
+    <span class="points-badge">3,0 Pontos</span>
+  </div>
+  <p>Execute as passagens de <strong>Ida</strong> e de <strong>Volta</strong> e preencha o quadro completo de programação do projeto:</p>
+  
+  <table>
+    <thead>
+      <tr>
+        <th style="text-align:center;">Atividade</th>
+        <th style="text-align:center;">Duração ($d$)</th>
+        <th style="text-align:center;">Início Cedo<br>(ES / IMC)</th>
+        <th style="text-align:center;">Término Cedo<br>(EF / TMC)</th>
+        <th style="text-align:center;">Início Tarde<br>(LS / IMT)</th>
+        <th style="text-align:center;">Término Tarde<br>(LF / TMT)</th>
+        <th style="text-align:center;">Folga Total<br>(FT)</th>
+        <th style="text-align:center;">Atividade Crítica?<br>(Sim / Não)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td style="text-align:center;"><strong>A</strong></td><td style="text-align:center;">2 dias</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td style="text-align:center;"><strong>B</strong></td><td style="text-align:center;">4 dias</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td style="text-align:center;"><strong>C</strong></td><td style="text-align:center;">*(calc. PERT)*</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td style="text-align:center;"><strong>D</strong></td><td style="text-align:center;">5 dias</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td style="text-align:center;"><strong>E</strong></td><td style="text-align:center;">4 dias</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td style="text-align:center;"><strong>F</strong></td><td style="text-align:center;">3 dias</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td style="text-align:center;"><strong>G</strong></td><td style="text-align:center;">3 dias</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td style="text-align:center;"><strong>H</strong></td><td style="text-align:center;">2 dias</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    </tbody>
+  </table>
 
-<div class="answer-space">
-<p><strong>Cálculo do $t_e$ da Tarefa C:</strong></p>
-<br><br><br>
-<p><strong>Resultado final ($t_e$):</strong> __________ dias</p>
+  <div class="callout callout-decision">
+    <p><strong>3.1 Prazo Mínimo de Conclusão do Veículo:</strong> ____________ dias.</p>
+    <p><strong>3.2 Caminho(s) Crítico(s) Identificado(s):</strong> __________________________________________________</p>
+  </div>
+</div>
+
+<div class="question-card">
+  <div class="question-header">
+    <div class="question-title">Questão 4 · Gestão de Riscos, Sensibilidade e Aceleração (*Crashing*)</div>
+    <span class="points-badge">2,5 Pontos</span>
+  </div>
+  
+  <p><strong>4.1 Cenário de Imprevisto Logístico (1,25 pts):</strong><br>
+  O transportador das baterias e placas solares comunicou que a <strong>Atividade C sofrerá um atraso de 2 dias</strong> além do prazo previsto (passando de 3 para 5 dias de duração).</p>
+  <ul>
+    <li>Esse atraso na Atividade C adiará a entrega final do EcoSprint na vistoria técnica da feira? <strong>[ &nbsp; ] SIM &nbsp;&nbsp;&nbsp; [ &nbsp; ] NÃO</strong></li>
+    <li><strong>Fundamente tecnicamente</strong> sua resposta utilizando a <strong>Folga Total</strong> apurada na Questão 3:</li>
+  </ul>
+  <div style="border: 1px dashed #cbd5e1; border-radius: 8px; padding: 12px; background: #fdfdfd; min-height: 70px; margin-bottom: 18px;"></div>
+
+  <p><strong>4.2 Cenário de Decisão de Investimento (*Crashing*) (1,25 pts):</strong><br>
+  A coordenação acadêmica disponibilizou uma verba para contratar um técnico terceirizado capaz de antecipar a <strong>Atividade E de 4 para 2 dias</strong> (ganho de 2 dias de montagem).</p>
+  <ul>
+    <li>Como engenheiro(a) de produção responsável, você aprovaria o gasto dessa verba na Atividade E para antecipar a entrega do protótipo? <strong>[ &nbsp; ] SIM &nbsp;&nbsp;&nbsp; [ &nbsp; ] NÃO</strong></li>
+    <li><strong>Por quê?</strong> Explique com base na lógica do Caminho Crítico:</li>
+    <div style="border: 1px dashed #cbd5e1; border-radius: 8px; padding: 12px; background: #fdfdfd; min-height: 60px; margin-bottom: 12px;"></div>
+    <li>Se a diretoria do campeonato impusesse uma antecipação de <strong>2 dias no prazo geral do projeto</strong>, em quais atividades prioritárias a equipe deveria negociar horas extras ou reforço de equipe?</li>
+    <div style="border: 1px dashed #cbd5e1; border-radius: 8px; padding: 12px; background: #fdfdfd; min-height: 50px;"></div>
+  </ul>
+</div>
+
+<div class="question-card">
+  <div class="question-header">
+    <div class="question-title">Questão 5 · Integração com o Chão de Fábrica e Dinâmica do PCP</div>
+    <span class="points-badge">1,0 Ponto</span>
+  </div>
+  <p>Em um texto fundamentado de <strong>5 a 7 linhas</strong>, responda à luz dos conceitos da disciplina:</p>
+  <p><em>"Por que uma montadora automotiva ou uma fábrica de materiais não gerencia seus lançamentos e paradas de linha apenas com planilhas informais ou listas de afazeres? Qual é o impacto real no Plano Mestre de Produção (PMP) e no MRP quando a gerência desconhece o Caminho Crítico de um projeto de expansão?"</em></p>
+  <div style="border: 1px dashed #cbd5e1; border-radius: 8px; padding: 14px; background: #fdfdfd; min-height: 110px;"></div>
 </div>
 
 ---
 
-### 🔹 Questão 2 · O Mapa da Rede AON e Todos os Caminhos (2,0 pontos)
+## 4. Rubrica Oficial de Avaliação (10,0 Pontos)
 
-**2.1** Esboce a **Rede AON** do projeto (caixinhas com nomes e setas indicando as dependências):
-
-<div class="answer-space" style="min-height: 180px;">
-<p style="color: #64748b;"><em>[Espaço para desenhar os 8 nós interligados pelas setas de precedência]</em></p>
-</div>
-
-**2.2** Liste todos os caminhos que levam do **Início (A)** até o **Fim (H)** e some a duração de cada um:
-
-<div class="answer-space">
-<ul>
-  <li><strong>Caminho 1:</strong> A $\to$ _____ $\to$ _____ $\to$ _____ $\to$ H = _____ dias.</li>
-  <li><strong>Caminho 2:</strong> A $\to$ _____ $\to$ _____ $\to$ _____ $\to$ H = _____ dias.</li>
-  <li><strong>Caminho 3:</strong> A $\to$ _____ $\to$ _____ $\to$ _____ $\to$ H = _____ dias.</li>
-</ul>
-<p><strong>Qual caminho é o mais demorado?</strong> __________________________________________________</p>
-</div>
-
----
-
-### 🔹 Questão 3 · Tabela de Cronograma, Folgas e Caminho Crítico (3,0 pontos)
-
-Preencha a tabela de cronograma completa com os valores da Ida, da Volta e das Folgas:
-
-| Tarefa | Duração ($d$) | Início Cedo (ES / IMC) | Término Cedo (EF / TMC) | Início Tarde (LS / IMT) | Término Tarde (LF / TMT) | Folga Total (FT) | É Crítica? (Sim / Não) |
-|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| **A** | 2 dias | | | | | | |
-| **B** | 4 dias | | | | | | |
-| **C** | *(calc. PERT)* | | | | | | |
-| **D** | 5 dias | | | | | | |
-| **E** | 4 dias | | | | | | |
-| **F** | 3 dias | | | | | | |
-| **G** | 3 dias | | | | | | |
-| **H** | 2 dias | | | | | | |
-
-<div class="callout-decision">
-<p><strong>3.1 Duração Mínima do Projeto:</strong> ____________ dias.</p>
-<p><strong>3.2 Sequência do Caminho Crítico:</strong> __________________________________________________</p>
-</div>
-
----
-
-### 🔹 Questão 4 · Tomada de Decisão Gerencial sob Pressão (2,5 pontos)
-
-#### ⚠️ Cenário 1 · Atraso do Fornecedor (1,25 pontos)
-O fornecedor das células solares avisou que a **Tarefa C vai atrasar 2 dias** (passará de 3 para 5 dias).
-- O projeto vai atrasar a entrega final na feira? **Sim ou Não?**
-- **Justifique tecnicamente** usando a **Folga** calculada para a Tarefa C:
-
-<div class="answer-space">
-<p><strong>Resposta e Justificativa Técnica:</strong></p>
-<br><br><br>
-</div>
-
-#### 💰 Cenário 2 · Onde Investir Recursos Extras? (*Crashing*) (1,25 pontos)
-A escola disponibilizou uma verba para pagar uma oficina para adiantar a **Tarefa E de 4 dias para 2 dias** (2 dias mais rápido).
-- O líder da equipe deve investir essa verba na Tarefa E para adiantar o carro? **Sim ou Não? Por quê?**
-- Se a equipe precisasse adiantar a entrega em **2 dias**, em quais tarefas deveria investir?
-
-<div class="answer-space">
-<p><strong>Resposta e Análise de Investimento:</strong></p>
-<br><br><br>
-</div>
-
----
-
-### 🔹 Questão 5 · Conexão com o Chão de Fábrica e o PCP (1,0 ponto)
-
-Em 4 a 6 linhas, explique com suas palavras:
-*"Por que uma montadora de automóveis não planeja seus lançamentos apenas com uma lista de tarefas comum no bloco de notas? O que acontece com a fábrica se ela não conhecer seu Caminho Crítico?"*
-
-<div class="answer-space">
-<br><br><br><br>
-</div>
-
----
-
-<br>
-
-# 📖 Gabarito e Guia de Correção (Exclusivo do Professor) {.tabset .tabset-fade .tabset-pills}
-
-### Resumo das Respostas
-
-#### Questão 1 (1,5 pts)
-$$t_e = \frac{1 + 4(3) + 5}{6} = \frac{18}{6} = \mathbf{3\text{ dias}}.$$
-
-#### Questão 2 (2,0 pts)
-- **Caminho 1 (via F):** $\text{A} \to \text{B} \to \text{D} \to \text{F} \to \text{H} = 2 + 4 + 5 + 3 + 2 = \mathbf{16\text{ dias}}$ 👑 *(Crítico)*
-- **Caminho 2 (via D e G):** $\text{A} \to \text{B} \to \text{D} \to \text{G} \to \text{H} = 2 + 4 + 5 + 3 + 2 = \mathbf{16\text{ dias}}$ 👑 *(Crítico)*
-- **Caminho 3 (via Elétrica):** $\text{A} \to \text{C} \to \text{E} \to \text{G} \to \text{H} = 2 + 3 + 4 + 3 + 2 = \mathbf{14\text{ dias}}$
-
-#### Questão 3 (3,0 pts)
-| Tarefa | $d$ | ES (IMC) | EF (TMC) | LS (IMT) | LF (TMT) | Folga (FT) | É Crítica? |
-|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| **A** | 2 | 0 | 2 | 0 | 2 | **0** | <span class="badge-crit">Sim 🚨</span> |
-| **B** | 4 | 2 | 6 | 2 | 6 | **0** | <span class="badge-crit">Sim 🚨</span> |
-| **C** | 3 | 2 | 5 | 4 | 7 | **2** | <span class="badge-free">Não (F=2)</span> |
-| **D** | 5 | 6 | 11 | 6 | 11 | **0** | <span class="badge-crit">Sim 🚨</span> |
-| **E** | 4 | 5 | 9 | 7 | 11 | **2** | <span class="badge-free">Não (F=2)</span> |
-| **F** | 3 | 11 | 14 | 11 | 14 | **0** | <span class="badge-crit">Sim 🚨</span> |
-| **G** | 3 | 11 | 14 | 11 | 14 | **0** | <span class="badge-crit">Sim 🚨</span> |
-| **H** | 2 | 14 | 16 | 14 | 16 | **0** | <span class="badge-crit">Sim 🚨</span> |
-
-- **Duração Total:** **16 dias**.
-- **Caminhos Críticos:** Dois caminhos empatados: **A-B-D-F-H** e **A-B-D-G-H**.
-
-#### Questão 4 (2,5 pts)
-- **Cenário 1:** **NÃO atrasa.** A tarefa C possui 2 dias de folga ($\text{FT} = 2$). O atraso consome toda a folga e a transforma em quase crítica, mas o término do projeto continua em 16 dias.
-- **Cenário 2:** **NÃO deve gastar.** A tarefa E tem 2 dias de folga. Gastar verba para adiantá-la não reduz o prazo da feira, pois a montagem continua esperando D terminar no dia 11. Para adiantar o projeto em 2 dias, deve-se investir em tarefas críticas compartilhadas (**A, B, D ou H**).
-
-#### Questão 5 (1,0 pt)
-- Uma lista comum ignora dependências e paralelismo. Sem o Caminho Crítico, a empresa desperdiça dinheiro acelerando atividades que têm folga e descarta as tarefas críticas, gerando atrasos em cascata, quebra de contratos e desorganização no PCP.
-
-### Rubrica de Pontuação
-
-| Critério | Nota Máx. | Critério de Avaliação |
+| Componente Avaliado | Nota Máx. | Critério de Excelência |
 |---|:---:|---|
-| **Cálculo PERT** | 1,5 | 1,0 ponto pela fórmula e substituição correta; 0,5 ponto pela resposta numérica exata. |
-| **Rede AON e Caminhos** | 2,0 | 1,0 ponto pelo desenho coerente das setas e nós; 1,0 ponto pelo somatório dos 3 caminhos. |
-| **Tabela de Cronograma** | 3,0 | 2,0 pontos para o preenchimento dos tempos e folgas; 0,5 ponto para o prazo total; 0,5 ponto para os caminhos críticos. |
-| **Decisão de Gestão** | 2,5 | 1,25 pontos para a análise da folga da tarefa C; 1,25 pontos para a justificativa do *crashing*. |
-| **Conexão com o PCP** | 1,0 | Clareza conceitual e articulação sobre a importância do caminho crítico na fábrica. |
+| **1. Aplicação do PERT** | 1,5 | Apresenta a fórmula correta, demonstra os cálculos e chega ao valor inteiro exato ($t_e = 3\text{d}$). |
+| **2. Rede AON e Caminhos** | 2,0 | Desenho do grafo respeita as precedências (1,0 pt); mapeamento e soma dos 3 caminhos sem omissões (1,0 pt). |
+| **3. Programação e Folgas** | 3,0 | Cálculos precisos de ES, EF, LS, LF e Folga Total (2,0 pts); correta indicação do prazo total e caminhos críticos (1,0 pt). |
+| **4. Tomada de Decisão** | 2,5 | Justificativa exata sobre a absorção do atraso pela folga (1,25 pts); rejeição fundamentada do *crashing* em atividade com folga e indicação de tarefas críticas corretas (1,25 pts). |
+| **5. Síntese do PCP** | 1,0 | Conexão lúcida e estruturada entre o CPM e os impactos de capacidade, materiais (MRP) e PMP na fábrica. |
+
+<details>
+<summary>💡 Dicas de Resolução e Conferência (Clique para expandir)</summary>
+<div style="padding-top: 10px;">
+<ul>
+  <li><strong>Conferência da Ida:</strong> Se a Atividade G depende de D (acaba em 11) e de E (acaba em 9), lembre-se de que ela só pode iniciar quando <em>ambas</em> estiverem prontas ($\max(11, 9) = 11$).</li>
+  <li><strong>Conferência da Volta:</strong> Na volta, o nó final H tem $\text{LF} = 16$. Ao voltar de G para D e E, faça $\text{LF} - \text{Duração}$. Se a Atividade D entrega para F e para G, seu $\text{LF}$ será o menor dos inícios mais tarde das duas ($\min(11, 11) = 11$).</li>
+  <li><strong>Folga Negativa?</strong> Em cronogramas determinísticos normais sem data imposta artificial, nunca deve haver folga negativa ($\text{FT} \ge 0$). Se der negativo, revise a aritmética da volta!</li>
+</ul>
+</div>
+</details>
+
+---
+
+<div style="text-align: center; color: #64748b; font-size: 0.9rem; margin-top: 40px; border-top: 1px solid #e2e8f0; padding-top: 20px;">
+  <strong>places.education</strong> · Ambiente Digital de Aprendizagem em Engenharia e Gestão de Operações<br>
+  Profª. Renata Oliveira · CEFET-MG / UFCIMG · Campus Nova Suíça / Nova Gameleira
+</div>
